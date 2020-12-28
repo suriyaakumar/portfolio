@@ -1,0 +1,103 @@
+body {
+    background-color: #EEE;
+   }
+
+   .card-title, h5 {
+    font-family: 'Chivo', sans-serif;
+  }
+
+   
+   .card-content, .btn {
+    font-family: 'Comfortaa', cursive;
+   }
+   
+   .neumorphism {
+    border-radius: 16px;
+    width: 100%;
+    box-shadow:
+     -4px -4px 12px 4px #FFF,
+     4px 4px 12px 4px #C4C4C4;
+   }
+
+   .input {
+    appearance: none;
+    border: none;
+    outline: none;
+    background: none;
+    padding: 16px;
+    border-radius: 16px;
+    display: block;
+    width: 100%;
+    margin: 0 auto 16px;
+    box-shadow:
+      inset -4px -4px 10px 4px #FFF,
+      inset 4px 4px 10px 4px #C4C4C4;
+    transition: 0.2s ease-out;
+   }
+
+   .button {
+    background-color:#E0E5EC;
+    border: none;
+    border-radius: 6px;
+    box-shadow: 9px 9px 16px rgb(163,177,198,0.6), -9px -9px 16px rgba(255,255,255, 0.5);
+    height: 48px;
+    overflow: hidden;
+    position: relative;
+    text-transform: uppercase;
+    width: 48px;
+   }
+
+   .button:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 200%;
+    height: 100%;
+    opacity: 0;
+    transform: translateX(-100%);
+    
+    background: rgba(255, 255, 255, 0.13);
+    background: linear-gradient(
+      to right, 
+      rgba(255, 255, 255, 0.13) 0%,
+      rgba(255, 255, 255, 0.13) 77%,
+      rgba(255, 255, 255, 0.5) 92%,
+      rgba(255, 255, 255, 0.3) 100%
+    );
+  }
+
+   .button:hover::after {
+    opacity: 1;
+    top: 0;
+    left: 0;
+    transform: translateX(0);
+    transition-property: transform, opacity;
+    transition-duration: 0.7s, 0.15s;
+    transition-timing-function: ease;  
+   }
+
+   /* animation */
+   .bio::before {
+    content: 'Student.'; 
+    animation: bio 3s linear infinite;
+   }
+
+   @keyframes bio {
+  0% { 
+      content: "Student."; 
+  } 
+
+  25% { 
+      content: "Web Developer."; 
+    } 
+
+  50% { 
+      content: "App Developer."; 
+  } 
+    
+  75% { 
+      content: "Music Aficionado."; 
+      animation: ease-in-out;
+  } 
+   }
