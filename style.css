@@ -1,3 +1,7 @@
+html {
+  scroll-behavior: smooth;
+}
+
 body {
     background-color: #EEE;
    }
@@ -7,7 +11,7 @@ body {
   }
 
    
-   .card-content, .btn {
+   .card-content, .btn, p {
     font-family: 'Comfortaa', cursive;
    }
    
@@ -15,8 +19,8 @@ body {
     border-radius: 16px;
     width: 100%;
     box-shadow:
-     -4px -4px 12px 4px #FFF,
-     4px 4px 12px 4px #C4C4C4;
+     -4px -4px 12px 0 #FFF,
+     8px 8px 12px 0 #C4C4C4;
    }
 
    .input {
@@ -27,8 +31,6 @@ body {
     padding: 16px;
     border-radius: 16px;
     display: block;
-    width: 100%;
-    margin: 0 auto 16px;
     box-shadow:
       inset -4px -4px 10px 4px #FFF,
       inset 4px 4px 10px 4px #C4C4C4;
@@ -46,6 +48,12 @@ body {
     text-transform: uppercase;
     width: 48px;
    }
+
+   .button:active {
+    box-shadow:
+    inset -4px -4px 10px 4px #FFF,
+    inset 4px 4px 10px 4px rgba(255, 255, 255, 0.5);
+  }
 
    .button:after {
     content: "";
@@ -79,13 +87,13 @@ body {
 
    /* animation */
    .bio::before {
-    content: 'Student.'; 
+    content: 'Programmer.';
     animation: bio 3s linear infinite;
    }
 
    @keyframes bio {
   0% { 
-      content: "Student."; 
+      content: "Programmer."; 
   } 
 
   25% { 
@@ -97,7 +105,6 @@ body {
   } 
     
   75% { 
-      content: "Music Aficionado."; 
-      animation: ease-in-out;
+      content: "Freelancer."; 
   } 
-   }
+}
