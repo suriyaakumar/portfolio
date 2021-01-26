@@ -3,8 +3,38 @@ html {
 }
 
 body {
-    background-color: #EEE;
+    background-color: #e0e5ec;
+}
+
+   .neumorphism {
+    background-color: #e0e5ec;
+    box-shadow: 9px 9px 16px rgba(163, 177, 198, 0.6), -9px -9px 16px rgba(255, 255, 255, 0.5);
+  }
+
+   .card {
+     border-radius: 35px; 
+     border: 1px solid rgba(255,255,255,0.2);
+     background: transparent;
    }
+
+   .card-inset {
+    box-shadow: inset 3px 3px 7px rgba(136, 165, 191, 0.48), inset -3px -3px 7px #FFFFFF;
+  }
+
+ .section a i {
+   margin-left: 2.5rem;
+ } 
+
+   a i {
+    padding: 1rem;
+    background-color: #e0e5ec;
+    box-shadow: 9px 9px 16px rgba(163, 177, 198, 0.6),
+    -9px -9px 16px rgba(255, 255, 255, 0.5),
+     inset 3px 3px 7px rgba(136, 165, 191, 0.48), 
+    inset -3px -3px 7px #FFFFFF;
+  background: linear-gradient(318.32deg, rgba(163, 177, 198, 0.1) 0%, rgba(163, 177, 198, 0.1) 55%, rgba(163, 177, 198, 0.25) 100%);
+    border-radius: 50%;
+   } 
 
    .card-title, h5 {
     font-family: 'Chivo', sans-serif;
@@ -15,76 +45,7 @@ body {
     font-family: 'Comfortaa', cursive;
    }
    
-   .neumorphism {
-    border-radius: 16px;
-    width: 100%;
-    box-shadow:
-     -4px -4px 12px 0 #FFF,
-     8px 8px 12px 0 #C4C4C4;
-   }
-
-   .input {
-    appearance: none;
-    border: none;
-    outline: none;
-    background: none;
-    padding: 16px;
-    border-radius: 16px;
-    display: block;
-    box-shadow:
-      inset -4px -4px 10px 4px #FFF,
-      inset 4px 4px 10px 4px #C4C4C4;
-    transition: 0.2s ease-out;
-   }
-
-   .button {
-    background-color:#E0E5EC;
-    border: none;
-    border-radius: 6px;
-    box-shadow: 9px 9px 16px rgb(163,177,198,0.6), -9px -9px 16px rgba(255,255,255, 0.5);
-    height: 48px;
-    overflow: hidden;
-    position: relative;
-    text-transform: uppercase;
-    width: 48px;
-   }
-
-   .button:active {
-    box-shadow:
-    inset -4px -4px 10px 4px #FFF,
-    inset 4px 4px 10px 4px rgba(255, 255, 255, 0.5);
-  }
-
-   .button:after {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 200%;
-    height: 100%;
-    opacity: 0;
-    transform: translateX(-100%);
-    
-    background: rgba(255, 255, 255, 0.13);
-    background: linear-gradient(
-      to right, 
-      rgba(255, 255, 255, 0.13) 0%,
-      rgba(255, 255, 255, 0.13) 77%,
-      rgba(255, 255, 255, 0.5) 92%,
-      rgba(255, 255, 255, 0.3) 100%
-    );
-  }
-
-   .button:hover::after {
-    opacity: 1;
-    top: 0;
-    left: 0;
-    transform: translateX(0);
-    transition-property: transform, opacity;
-    transition-duration: 0.7s, 0.15s;
-    transition-timing-function: ease;  
-   }
-
+   
    /* animation */
    .bio::before {
     content: 'Programmer.';
