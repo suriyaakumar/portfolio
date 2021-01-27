@@ -3,39 +3,68 @@ html {
   font-display: swap;
 }
 
-body {
+.light {
     background-color: #e0e5ec;
 }
 
-a i {
-  color: black;
-} 
-
 .neumorphism {
     background-color: #e0e5ec;
-    box-shadow: 9px 9px 16px rgba(163, 177, 198, 0.6), -9px -9px 16px rgba(255, 255, 255, 0.5);
-  }
+    box-shadow: 5px 5px 10px rgba(163, 177, 198, 1.0), -5px -5px 15px rgba(255, 255, 255, 0.7) ;
+}
 
-   .card {
-     border-radius: 35px; 
-     border: 1px solid rgba(255,255,255,0.2);
-     background: transparent;
+.inset {
+    box-shadow: inset 5px 5px 10px rgba(136, 165, 191, 0.48), inset -5px -5px 15px #FFFFFF;
+}
+
+.icon {
+     color: #3a3b3c;
+     padding: 1rem;
+     background-color: #e0e5ec;
+     border-radius: 2rem;
+     margin-bottom: 1rem;
+     box-shadow: 5px 5px 10px #b8b9be, -5px -5px 10px #fff;
    }
 
-   .card-inset {
-    box-shadow: inset 3px 3px 7px rgba(136, 165, 191, 0.48), inset -3px -3px 7px #FFFFFF;
+   .icon:active {
+    box-shadow: inset 2px 2px 4px #b8b9be, inset -2px -2px 4px #fff;
   }
 
-   a i {
+/* DARK MODE */ 
+  
+.dark {
+  background-color: #191a1e;
+  color: #c7c7c7;
+}
+
+.neumorphism-dark {
+    color: #c7c7c7;
+    border-radius: 50px;
+    background: #191a1e;
+    box-shadow:  5px 5px 15px #0a0a0c, 
+             -5px -5px 15px #282a30;
+}
+
+   .inset-dark {
+    box-shadow: inset 1.5px 1.5px 3px #0a0a0c, inset -1.5px -1.5px 3px #282a30; 
+  } 
+
+  .icon-dark {
+    color: #c7c7c7;
+    background-color: #191a1e;
+    border-radius: 2rem;
+    margin-bottom: 1rem;
     padding: 1rem;
-    background-color: #e0e5ec;
-    box-shadow: 9px 9px 16px rgba(163, 177, 198, 0.6),
-    -9px -9px 16px rgba(255, 255, 255, 0.5),
-     inset 3px 3px 7px rgba(136, 165, 191, 0.48), 
-    inset -3px -3px 7px #FFFFFF;
-  background: linear-gradient(318.32deg, rgba(163, 177, 198, 0.1) 0%, rgba(163, 177, 198, 0.1) 55%, rgba(163, 177, 198, 0.25) 100%);
-    border-radius: 50%;
-   } 
+    box-shadow: 5px 5px 10px #0a0a0c, -5px -5px 10px #282a30;
+  }
+
+   .icon-dark:active {
+     box-shadow: inset 2px 2px 4px #0a0a0c, inset -2px -2px 4px #282a30;
+   }
+
+   .card {
+    border-radius: 21px; 
+    background: transparent;
+}
 
    .card-title, h5 {
     font-family: 'Chivo', sans-serif;
@@ -45,8 +74,7 @@ a i {
    .card-content, .btn, p {
     font-family: 'Comfortaa', cursive;
    }
-   
-   
+      
    /* animation */
    .bio::before {
     content: 'Programmer.';
