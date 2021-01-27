@@ -7,7 +7,11 @@ body {
     background-color: #e0e5ec;
 }
 
-   .neumorphism {
+a i {
+  color: black;
+} 
+
+.neumorphism {
     background-color: #e0e5ec;
     box-shadow: 9px 9px 16px rgba(163, 177, 198, 0.6), -9px -9px 16px rgba(255, 255, 255, 0.5);
   }
@@ -21,10 +25,6 @@ body {
    .card-inset {
     box-shadow: inset 3px 3px 7px rgba(136, 165, 191, 0.48), inset -3px -3px 7px #FFFFFF;
   }
-
- .section a i {
-   margin-left: 2.5rem;
- } 
 
    a i {
     padding: 1rem;
