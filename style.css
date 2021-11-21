@@ -163,14 +163,14 @@ html {
   } 
 
   25% { 
-      content: "Web/App Developer."; 
+      content: "Web Developer."; 
     } 
 
   50% { 
-      content: "Integration Developer."; 
+      content: "App Developer."; 
   } 
     
   75% { 
-      content: "Student."; 
+      content: "Integration Developer"; 
   } 
 }
