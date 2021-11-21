@@ -1,4 +1,4 @@
-function myFunction() {
+function myFunction()  {
     document.body.classList.toggle('light');
     document.body.classList.toggle('dark');
     var cards = document.getElementsByClassName('block');
@@ -16,4 +16,14 @@ function myFunction() {
         icons[i].classList.toggle('icon');
         icons[i].classList.toggle('icon-dark');
     }
-}
+    var inputs = document.getElementsByClassName('form-input');
+    for(var i=0; i< inputs.length; i++){
+        inputs[i].classList.toggle('input');
+        inputs[i].classList.toggle('input-dark');
+    }
+    var button = document.getElementsByClassName('button');
+    for(var i=0; i<button.length; i++){
+        button[i].classList.toggle('neobutton');
+        button[i].classList.toggle('neobutton-dark');
+    } 
+}           
