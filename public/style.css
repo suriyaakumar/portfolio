@@ -1,0 +1,176 @@
+html {
+  scroll-behavior: smooth;
+  font-display: swap;
+}
+
+.light {
+    background-color: #e0e5ec;
+}
+
+.dark {
+  background-color: #191a1e;
+  color: #c7c7c7;
+}
+
+.neumorphism {
+    background-color: #e0e5ec;
+    box-shadow: 5px 5px 10px rgba(163, 177, 198, 1.0), -5px -5px 15px rgba(255, 255, 255, 0.7) ;
+}
+
+.neumorphism-dark {
+  color: #c7c7c7;
+  border-radius: 50px;
+  background: #191a1e;
+  box-shadow:  5px 5px 15px #0a0a0c, 
+           -5px -5px 15px #282a30;
+}
+
+.inset {
+    box-shadow: inset 5px 5px 10px rgba(136, 165, 191, 0.48), inset -5px -5px 15px #FFFFFF;
+}
+
+.inset-dark {
+  box-shadow: inset 1.5px 1.5px 3px #0a0a0c, inset -1.5px -1.5px 3px #282a30; 
+} 
+
+.link {
+  border-radius: 2rem;
+  margin-bottom: 1rem;
+  padding: 1rem;
+}
+
+.icon {
+     color: #3a3b3c;
+     background-color: #e0e5ec;
+     box-shadow: 5px 5px 10px #b8b9be, -5px -5px 10px #fff;
+   }
+
+.icon-dark {
+    color: #c7c7c7;
+    background-color: #191a1e;
+    box-shadow: 5px 5px 10px #0a0a0c, -5px -5px 10px #282a30;
+  }
+
+   .icon:active {
+    box-shadow: inset 2px 2px 4px #b8b9be, inset -2px -2px 4px #fff;
+  }
+
+   .icon-dark:active {
+     box-shadow: inset 2px 2px 4px #0a0a0c, inset -2px -2px 4px #282a30;
+   }
+  
+   .card {
+    border-radius: 21px; 
+    background: transparent;
+}
+
+   h1, h2, h4, h5 {
+    font-family: 'Chivo', sans-serif;
+  }
+
+  textarea.form-input {
+    width: 100%;
+    height: 25vh;
+  }
+
+  .form-input {
+    appearance: none;
+    border: none;
+    outline: none;
+    background: none;
+    padding: 20px;
+    border-radius: 16px;
+    display: block;
+    width: 100%;
+    margin-bottom: 1.5%;
+    transition: 0.2s ease-out;
+  }
+
+  .input {
+    color: black; 
+    box-shadow:
+      inset 5px 5px 15px rgba(136, 165, 191, 0.48),
+      inset -5px -5px 15px #FFFFFF; 
+   }
+   
+   .input-dark {
+    color: white;
+    box-shadow: inset 5px 5px 15px #0a0a0c, inset -5px -5px 15px #282a30;
+   }
+
+   .input::placeholder {
+     color: black;
+   }
+
+   .input-dark::placeholder {
+    color: white;
+  }
+
+   .input-dark:focus {
+    box-shadow: inset 2px 2px 5px #0a0a0c, inset -2px -2px 10px #282a30;
+  }
+   
+   .input:focus {
+     box-shadow: inset 2px 2px 5px rgba(136, 165, 191, 0.48),
+     inset -2px -2px 10px  #FFFFFF;    
+   }
+
+   .button {
+    outline: none;
+    border: none;
+    appearance: none;
+    background: none;
+    cursor: pointer;
+    margin-top: 2.5%;
+    margin-left: auto;
+    margin-right: auto;
+    width: 45%;
+    border-radius: 16px;
+    padding: 15px;
+   }
+
+   .neobutton {
+     box-shadow: 5px 5px 10px rgba(163, 177, 198, 1.0), -5px -5px 15px rgba(255, 255, 255, 0.7) ;
+     color: black;
+   }
+   
+   .neobutton-dark {
+    box-shadow: 5px 5px 15px #0a0a0c, -5px -5px 15px #282a30 ;
+    color: white;
+  }
+
+   .neobutton:active {
+    box-shadow: inset 2px 2px 5px rgba(163, 177, 198, 1.0), inset -2px -2px 7px rgba(255, 255, 255, 0.7) ;
+   }
+
+   .neobutton-dark:active {
+    box-shadow: inset 2px 2px 5px #0a0a0c, inset -2px -2px 7px #282a30 ;
+  }
+
+   .card-content, .btn, p {
+    font-family: 'Comfortaa', cursive;
+   }
+      
+   /* animation */
+   .bio::before {
+    content: 'Programmer.';
+    animation: bio 3s linear infinite;
+   }
+
+   @keyframes bio {
+  0% { 
+      content: "Programmer."; 
+  } 
+
+  25% { 
+      content: "Web Developer."; 
+    } 
+
+  50% { 
+      content: "App Developer."; 
+  } 
+    
+  75% { 
+      content: "Integration Developer."; 
+  } 
+}
