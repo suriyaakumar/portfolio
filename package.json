@@ -1,0 +1,58 @@
+{
+  "name": "portfolio",
+  "version": "1.0.0",
+  "description": "Portfolio of Suriyaa Kumar",
+  "main": "index.js",
+  "scripts": {
+    "start": "npx nodemon index",
+    "lint": "eslint **/*.{js,ejs,css} --ignore-pattern node_modules/",
+    "release": "commit-and-tag-version",
+    "release:minor": "commit-and-tag-version --release-as minor",
+    "release:patch": "commit-and-tag-version --release-as patch",
+    "release:major": "commit-and-tag-version --release-as major"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/suriyaakumar/portfolio.git"
+  },
+  "keywords": [
+    "Suriyaa",
+    "suriyaakumar",
+    "Suriyaa Kumar",
+    "Software Developer",
+    "SDE",
+    "Developer",
+    "Programmer",
+    "Portfolio"
+  ],
+  "author": "Suriyaa Kumar",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/suriyaakumar/portfolio/issues"
+  },
+  "homepage": "https://github.com/suriyaakumar/portfolio#readme",
+  "devDependencies": {
+    "@commitlint/cli": "^17.0.3",
+    "@commitlint/config-conventional": "^17.0.3",
+    "commit-and-tag-version": "^10.1.0",
+    "eslint": "^8.21.0",
+    "eslint-config-standard": "^17.0.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-n": "^15.2.4",
+    "eslint-plugin-promise": "^6.0.0",
+    "husky": "^8.0.1",
+    "lint-staged": "^13.0.3",
+    "nodemon": "^2.0.19",
+    "prettier": "^2.7.1"
+  },
+  "dependencies": {
+    "ejs": "^3.1.8",
+    "express": "^4.18.1"
+  }, 
+  "lint-staged": {
+    "**/*.{js}": [
+      "prettier --write",
+      "eslint --fix"
+    ]
+  }
+}
