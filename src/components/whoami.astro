@@ -1,0 +1,34 @@
+---
+import "../styles/whoami.css";
+
+interface Field {
+  key: string;
+  value: string;
+}
+
+interface Props {
+  fields?: Field[];
+}
+
+const {
+  fields = [
+    { key: "NAME", value: "Suriyaa Kumar" },
+    { key: "A/S/L", value: "26 / M / Chennai" },
+    { key: "STATUS", value: "Building things that work, not just things that sound impressive." },
+  ],
+} = Astro.props;
+---
+
+<div class="whoami">
+  <div class="log-header">
+    <span>LOG // IDENTITY</span>
+  </div>
+  <div class="log-body">
+    {fields.map((field) => (
+      <div class="field">
+        <span class="key">{field.key}</span>
+        <span class="value">{field.value}</span>
+      </div>
+    ))}
+  </div>
+</div>

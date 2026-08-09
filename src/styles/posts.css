@@ -1,0 +1,73 @@
+
+  article {
+    max-width: 640px;
+    text-align: left;
+  }
+
+  .post-header {
+    margin-bottom: 2.5rem;
+    text-align: left;
+  }
+
+  .post-header h1 {
+    text-align: left;
+  }
+
+  .meta {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 0.75rem;
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: var(--ink-faint);
+  }
+
+  .content {
+    font-family: var(--font-body);
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: var(--ink-soft);
+    text-align: left;
+  }
+
+  .content p {
+    text-align: left;
+    margin-bottom: 1.25rem;
+  }
+
+
+  .content h2 {
+    font-family: var(--font-handwritten, var(--font-body));
+    color: var(--ink);
+    margin-top: 2.5rem;
+    text-align: left;
+  }
+
+  .content a {
+    color: var(--accent) !important;
+    text-decoration: none !important;
+    border-bottom: 1px solid var(--accent);
+  }
+
+  .content a:hover {
+    border-bottom-color: var(--ink);
+  }
+ 
+  .content a:visited {
+    color: var(--accent) !important;
+  }
+
+
+  .content code {
+    font-family: var(--font-mono);
+    background: var(--paper-dim);
+    padding: 0.1rem 0.3rem;
+    font-size: 0.9em;
+  }
+
+  .content ul,
+  .content ol {
+    text-align: left;
+    padding-left: 1.5rem;
+  }

@@ -1,0 +1,95 @@
+:root {
+    --font-body: "Source Serif 4", Georgia, serif;
+    --font-handwritten: "Kalam", cursive;
+    --font-mono: "JetBrains Mono", monospace;
+
+    --paper: #EDEAE1;
+    --paper-dim: #E3E0D6;
+    --paper-edge: #D8D4C7;
+
+    --ink: #2B2A26;
+    --ink-soft: #55524A;
+    --ink-faint: #8C887C;
+
+    --accent-face: #7A5C42;
+    --accent-brain: #3F5D54;
+    --accent-heart: #7A3B3B;
+}
+
+html,
+body {
+    width: 100%;
+    min-height: 100%;
+    margin: 0;
+    padding: 0%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    min-height: 100vh;
+    width: 100%;
+    color: var(--ink);
+    font-family: var(--font-body);
+    background:
+        radial-gradient(ellipse 100% 70% at 25% -10%, rgba(255, 255, 255, 0.55) 0%, rgba(255, 255, 255, 0) 55%),
+        #E7E3D8;
+    box-shadow: inset 0 0 100px rgba(0, 0, 0, 0.08);
+}
+
+main {
+    width: 100%;
+    max-width: 720px;
+    padding: 4rem 1.5rem;
+    margin: 0 auto;
+    box-sizing: border-box;
+    align-items: center;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+}
+
+/* Tablet and below */
+@media (max-width: 768px) {
+    main {
+        padding: 3rem 1.25rem;
+    }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+    main {
+        padding: 2rem 1rem;
+    }
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0.35;
+    mix-blend-mode: normal;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.55' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    background-repeat: repeat;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin: 0;
+    font-family: var(--font-handwritten);
+    font-size: 1.75rem;
+    font-weight: 400;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    text-transform: uppercase;
+    text-align: center;
+}

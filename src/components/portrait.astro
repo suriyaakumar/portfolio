@@ -1,0 +1,15 @@
+---
+import "../styles/portrait.css";
+import { Image } from "astro:assets";
+import image from "../image.png";
+
+---
+
+<div class="badge">
+  <div class="photo-frame">
+    <Image src={image} alt="Suriyaa Kumar" priority />
+  </div>
+  <div class="identity">
+    <slot />
+  </div>
+</div>
