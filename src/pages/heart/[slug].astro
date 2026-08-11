@@ -6,24 +6,33 @@ import BaseLayout from "../../layouts/baseLayout.astro";
 
 export async function getStaticPaths() {
   const posts = await getCollection("blog", ({ data }) => !data.draft);
-  return posts.map((post) => ({
-    params: { slug: post.id },
-    props: { post },
-  }));
+
+  return posts.map((post) => {
+    const wordCount = post.body?.trim().split(/\s+/).length ?? 0;
+    const readingTime = Math.max(1, Math.round(wordCount / 200)); 
+    const printInches = ((wordCount / 250) * 9).toFixed(1);
+
+    return {
+      params: { slug: post.id },
+      props: { post: {...post, wordCount, readingTime, printInches} },
+    };
+  });
 }
 
 const { post } = Astro.props;
 const { Content } = await render(post);
 ---
 
-<BaseLayout title={`${post.data.title}`}>
+<BaseLayout title={`${post.data.title}`} description={`${post.data.description}`}>
   <article>
+    <a href="/heart" class="back-link">
+      <span class="prompt">&lt;</span> HEART
+    </a>
     <div class="post-header">
-      <h1>{post.data.title}</h1>
+      <h1>[{post.data.title}]</h1>
       <div class="meta">
-        <span class="date">
-          {post.data.date.toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" })}
-        </span>
+        <div class="field"><span class="key">[DATE]</span><span class="value">{post.data.date.toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" })}</span></div>
+        <div class="field"><span class="key">[READ_TIME]</span><span class="value">{post.readingTime} min · {post.wordCount} words · {post.printInches}" printed</span></div>
       </div>
     </div>
     <div class="content">

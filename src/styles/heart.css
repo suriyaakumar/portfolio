@@ -20,6 +20,7 @@
   border-bottom: 1px solid var(--paper-edge, #D8D4C7);
 }
 
+
 .year {
   display: grid;
   grid-template-columns: 180px 1fr;
@@ -52,7 +53,7 @@
 
 .title {
   font-family: var(--font-body);
-  font-size: 1.3rem;
+  font-size: clamp(0.85rem, 4.2vw, 1.3rem);
 }
 
 .post time {

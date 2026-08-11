@@ -118,6 +118,9 @@
 .field .value {
     color: var(--ink-soft, #55524A);
     line-height: 1.5;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
 }
 
 .log-entry.end {

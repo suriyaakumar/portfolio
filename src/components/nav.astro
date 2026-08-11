@@ -28,7 +28,7 @@ function isActive(href: string) {
         href={link.href}
         class={`link ${isActive(link.href) ? "active" : ""}`}
       >
-        {link.label}
+        {isActive(link.href) ? `[${link.label}]` : link.label}
       </a>
     ))}
   </div>
@@ -60,7 +60,7 @@ function isActive(href: string) {
         href={link.href}
         class={`link ${isActive(link.href) ? "active" : ""}`}
       >
-        {link.label}
+        {isActive(link.href) ? `[${link.label}]` : link.label}
       </a>
     ))}
   </div>

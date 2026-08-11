@@ -10,17 +10,65 @@
   }
 
   .post-header h1 {
-    text-align: left;
+    text-align: center;
+    font-size: clamp(1.15rem, 5vw, 2.25rem);
+    line-height: 1.25;
   }
 
   .meta {
     display: flex;
-    align-items: center;
-    gap: 1rem;
-    margin-top: 0.75rem;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-top: 1.5rem;
     font-family: var(--font-mono);
     font-size: 0.8rem;
     color: var(--ink-faint);
+  }
+
+  .back-link {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 0.4rem;
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--ink-faint);
+    margin-bottom: 1.5rem;
+    transition: color 0.2s;
+  }
+  
+  .back-link:hover {
+    color: var(--accent-heart);
+  }
+  
+  .back-link .prompt {
+    color: var(--accent-heart);
+    font-weight: 700;
+  }
+
+  .meta .field {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    margin-bottom: 0.3rem;
+  }
+  
+  .meta .field:last-child {
+    margin-bottom: 0;
+  }
+  
+  .meta .key {
+    flex-shrink: 0;
+    width: 6.5rem;
+    color: var(--ink-faint);
+    font-weight: 600;
+  }
+  
+  .meta .value {
+    color: var(--ink-soft);
+    flex: 1;
   }
 
   .content {
@@ -40,22 +88,28 @@
   .content h2 {
     font-family: var(--font-handwritten, var(--font-body));
     color: var(--ink);
+    font-size: 0.95rem;
     margin-top: 2.5rem;
-    text-align: left;
+    text-align: center;
   }
 
   .content a {
-    color: var(--accent) !important;
+    color: var(--accent-heart) !important;
     text-decoration: none !important;
-    border-bottom: 1px solid var(--accent);
+    font-weight: 600;
+    border-bottom: 2px solid var(--accent-heart);
+    padding-bottom: 1px;
+    background: linear-gradient(transparent 60%, rgba(122, 59, 59, 0.08) 60%);
   }
-
+  
   .content a:hover {
     border-bottom-color: var(--ink);
+    color: var(--ink) !important;
+    background: rgba(122, 59, 59, 0.12);
   }
- 
+  
   .content a:visited {
-    color: var(--accent) !important;
+    color: var(--accent-heart) !important;
   }
 
 

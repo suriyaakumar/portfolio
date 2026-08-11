@@ -59,8 +59,8 @@
   }
 
   .stars {
-    font-size: 0.8rem;
-    color: var(--ink-faint, #8A877C);
+    font-size: 0.9rem;
+    color: var(--ink, #8A877C);
   }
 
   .log-body {
