@@ -125,3 +125,88 @@
     text-align: left;
     padding-left: 1.5rem;
   }
+
+  .share-block {
+    margin: 3rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--paper-edge);
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    text-align: center;
+  }
+  
+  /* Shared button styling */
+  
+  .share-trigger,
+  .share-fallback button {
+    appearance: none;
+    background: none;
+    border: 1px solid var(--paper-edge);
+    color: var(--ink-soft);
+    font: inherit;
+    font-size: 0.8rem;
+    line-height: 1.2;
+    letter-spacing: 0.03em;
+    padding: 0.3rem 0.7rem;
+    cursor: pointer;
+  }
+  
+  .share-trigger:hover,
+  .share-fallback button:hover {
+    color: var(--ink);
+    border-color: var(--ink);
+  }
+  
+  /* Desktop share options */
+  
+  .share-fallback {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 0.75rem;
+  }
+  
+  .share-fallback a {
+    display: inline-block;
+    color: var(--ink-soft);
+    line-height: 1.2;
+    text-decoration: none;
+    border-bottom: 1px solid var(--paper-edge);
+  }
+  
+  .share-fallback a:hover {
+    color: var(--ink);
+    border-bottom-color: var(--ink);
+  }
+  
+  .share-fallback button {
+    margin: 0;
+  }
+  
+  /* Status message */
+  
+  .share-status {
+    margin-left: 0.75rem;
+    color: var(--ink-faint);
+  }
+  
+  /* Mobile */
+  
+  @media (max-width: 768px) {
+    .share-fallback {
+      display: none;
+    }
+  
+    .share-trigger {
+      display: inline-block;
+    }
+  }
+  
+  /* Desktop */
+  
+  @media (min-width: 769px) {
+    .share-trigger {
+      display: none;
+    }
+  }

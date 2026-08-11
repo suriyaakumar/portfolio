@@ -110,7 +110,7 @@
 .field .key {
     flex-shrink: 0;
     width: 3.5rem;
-    color: var(--ink-faint, #8A877C);
+    color: var(--ink);
     font-size: 0.72rem;
     letter-spacing: 0.03em;
 }

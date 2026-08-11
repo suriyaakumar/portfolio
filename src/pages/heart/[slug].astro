@@ -38,5 +38,19 @@ const { Content } = await render(post);
     <div class="content">
       <Content />
     </div>
+    <div class="share-block">
+      <button id="share-btn" class="share-trigger">[SHARE_ENTRY]</button>
+      <div id="share-fallback" class="share-fallback">
+        <a id="share-x" target="_blank" rel="noopener">X/TWITTER</a>
+        <a id="share-linkedin" target="_blank" rel="noopener">LINKEDIN</a>
+        <button id="share-copy">COPY_LINK</button>
+      </div>
+      <span id="share-status" class="share-status"></span>
+    </div>
   </article>
 </BaseLayout>
+
+
+<script>
+   import '../../scripts/share'
+</script>

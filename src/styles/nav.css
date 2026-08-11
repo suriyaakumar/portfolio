@@ -33,7 +33,7 @@
 }
 
 .link {
-  color: var(--ink-faint, #8A877C);
+  color: var(--ink-soft, #8A877C);
   text-decoration: none;
   text-transform: uppercase;
   transition: color 0.2s;
@@ -106,7 +106,7 @@
 .external-link {
   font-size: 0.72rem;
   letter-spacing: 0.03em;
-  color: var(--ink-faint, #8A877C);
+  color: var(--ink-soft, #8A877C);
   opacity: 0.75;
 }
 

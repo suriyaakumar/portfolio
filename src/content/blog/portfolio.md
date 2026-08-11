@@ -1,8 +1,8 @@
 ---
 title: "This home I claim"
-description: "A short one-line summary shown in previews and OG tags."
+description: "Talking about my digital home"
 date: 2026-08-11
-tags: ["music", "opinion"]
+tags: ["tech"]
 ---
 
 It feels hollow to spin up a portfolio in a weekend and have the blog section of the portfolio hosting flies, instead of files, (get it?) So, I decided to post a write-up on how I made this portfolio and the inspirations for this portfolio, both technical and design. Technically speaking, I'm a web developer who is primarily involved in React for the most part, but every now and then, a new Javascript framework pops up and catches your fancy. That framework was **Astro** for me.

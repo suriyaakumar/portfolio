@@ -26,6 +26,15 @@
   grid-template-columns: 180px 1fr;
 }
 
+/* Mobile */
+  
+@media (max-width: 768px) {
+  .year {
+    display: grid;
+    grid-template-columns: 90px 1fr;
+  }
+}
+
 .year-label {
   color: var(--ink-faint);
   font-family: var(--font-mono);
