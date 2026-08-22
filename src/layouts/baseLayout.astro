@@ -1,6 +1,7 @@
 ---
 import "../styles/tokens.css";
 import Nav from "../components/nav.astro";
+import Analytics from "@vercel/analytics/astro";
 
 interface Props {
   title: string;
@@ -30,5 +31,6 @@ const canonical = canonicalURL ?? new URL(Astro.url.pathname, Astro.site);
 		<footer>
         <Nav />
 		</footer>
+		<Analytics />
 	</body>
 </html>
