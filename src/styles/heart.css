@@ -1,5 +1,5 @@
 .writing {
-  width: 100%;
+  width: 700px;
   font-family: var(--font-mono, monospace);
   font-size: 1rem;
   text-align: left;
@@ -27,11 +27,15 @@
 }
 
 /* Mobile */
-  
+
 @media (max-width: 768px) {
   .year {
     display: grid;
     grid-template-columns: 90px 1fr;
+  }
+
+  .writing {
+    width: 100%;
   }
 }
 

@@ -1,4 +1,5 @@
 .badge {
+  max-width: 700px;
   display: flex;
   gap: 1.75rem;
   align-items: flex-start;

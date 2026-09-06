@@ -1,6 +1,6 @@
 
   article {
-    max-width: 640px;
+    max-width: 700px;
     text-align: left;
   }
 
@@ -38,11 +38,11 @@
     margin-bottom: 1.5rem;
     transition: color 0.2s;
   }
-  
+
   .back-link:hover {
     color: var(--accent-heart);
   }
-  
+
   .back-link .prompt {
     color: var(--accent-heart);
     font-weight: 700;
@@ -54,18 +54,18 @@
     gap: 0.75rem;
     margin-bottom: 0.3rem;
   }
-  
+
   .meta .field:last-child {
     margin-bottom: 0;
   }
-  
+
   .meta .key {
     flex-shrink: 0;
     width: 6.5rem;
     color: var(--ink-faint);
     font-weight: 600;
   }
-  
+
   .meta .value {
     color: var(--ink-soft);
     flex: 1;
@@ -101,13 +101,13 @@
     padding-bottom: 1px;
     background: linear-gradient(transparent 60%, rgba(122, 59, 59, 0.08) 60%);
   }
-  
+
   .content a:hover {
     border-bottom-color: var(--ink);
     color: var(--ink) !important;
     background: rgba(122, 59, 59, 0.12);
   }
-  
+
   .content a:visited {
     color: var(--accent-heart) !important;
   }
@@ -134,9 +134,9 @@
     font-size: 0.8rem;
     text-align: center;
   }
-  
+
   /* Shared button styling */
-  
+
   .share-trigger,
   .share-fallback button {
     appearance: none;
@@ -150,15 +150,15 @@
     padding: 0.3rem 0.7rem;
     cursor: pointer;
   }
-  
+
   .share-trigger:hover,
   .share-fallback button:hover {
     color: var(--ink);
     border-color: var(--ink);
   }
-  
+
   /* Desktop share options */
-  
+
   .share-fallback {
     display: flex;
     align-items: center;
@@ -166,7 +166,7 @@
     gap: 1rem;
     margin-top: 0.75rem;
   }
-  
+
   .share-fallback a {
     display: inline-block;
     color: var(--ink-soft);
@@ -174,37 +174,37 @@
     text-decoration: none;
     border-bottom: 1px solid var(--paper-edge);
   }
-  
+
   .share-fallback a:hover {
     color: var(--ink);
     border-bottom-color: var(--ink);
   }
-  
+
   .share-fallback button {
     margin: 0;
   }
-  
+
   /* Status message */
-  
+
   .share-status {
     margin-left: 0.75rem;
     color: var(--ink-faint);
   }
-  
+
   /* Mobile */
-  
+
   @media (max-width: 768px) {
     .share-fallback {
       display: none;
     }
-  
+
     .share-trigger {
       display: inline-block;
     }
   }
-  
+
   /* Desktop */
-  
+
   @media (min-width: 769px) {
     .share-trigger {
       display: none;
