@@ -3,7 +3,7 @@ export const prerender = false;
 const RAG_ENDPOINT = process.env.RAG_ENDPOINT
 const APP_SECRET = process.env.APP_SECRET
 
-export async function POST(request: Request) {
+export async function POST({ request }: { request: Request }) {
     let body;
     try {
         body = await request.json();
