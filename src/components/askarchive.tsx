@@ -2,9 +2,6 @@ import { useEffect, useRef, useState } from 'react';
 import '../styles/tokens.css'
 import '../styles/askarchive.css';
 
-const secret = import.meta.env.PUBLIC_APP_SECRET;
-const endpoint = import.meta.env.PUBLIC_RAG_ENDPOINT;
-
 type Source = {
   title: string;
   score: number;
@@ -43,11 +40,10 @@ export default function AskArchive() {
 
     // Call your API or logic to get the answer based on the question
     try {
-      const response = await fetch(endpoint, {
+      const response = await fetch('/api/ask', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'X-App-Secret': secret
         },
         body: JSON.stringify({ question }),
       });
