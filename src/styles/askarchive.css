@@ -193,7 +193,34 @@ textarea:focus {
     color: var(--accent-heart);
 }
 
+
+.ask-trigger {
+    display: none;
+}
+
 @media (max-width: 768px) {
+    .ask-trigger {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: fixed;
+        top: 40%;
+        right: 0.5rem;
+        z-index: 100;
+        background: var(--paper-dim);
+        border: 1px solid var(--paper-edge);
+        border-right: none;
+        border-radius: 4px 0 0 4px;
+        padding: 0.75rem 0.5rem;
+        font-family: var(--font-mono);
+        font-size: 0.75rem;
+        letter-spacing: 0.05em;
+        color: var(--accent-heart);
+        writing-mode: vertical-rl;
+        text-orientation: mixed;
+        cursor: pointer;
+    }
+
     .ask-archive {
         display: none;
     }
