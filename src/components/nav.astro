@@ -1,0 +1,84 @@
+---
+import "../styles/nav.css"
+
+const path = Astro.url.pathname;
+
+const sectionLinks = [
+  { label: "FACE", href: "/" },
+  { label: "BRAIN", href: "/brain" },
+  { label: "HEART", href: "/heart" },
+];
+
+const externalLinks = [
+  { label: "LINKEDIN", href: "https://linkedin.com/in/suriyaakumar" },
+  { label: "GITHUB", href: "https://github.com/suriyaakumar" },
+  { label: "EMAIL", href: "mailto:believeinsurya@gmail.com" },
+];
+
+function isActive(href: string) {
+  return path === href || path.startsWith(`${href}/`);
+}
+---
+
+<nav class="nav-island desktop-nav" aria-label="Site navigation">
+
+  <div class="links">
+    {sectionLinks.map((link) => (
+      <a
+        href={link.href}
+        class={`link ${isActive(link.href) ? "active" : ""}`}
+      >
+        {isActive(link.href) ? `[${link.label}]` : link.label}
+      </a>
+    ))}
+  </div>
+
+  <div class="divider" aria-hidden="true"></div>
+
+  <a href="/rss.xml" class="link rss-link" title="RSS feed">RSS</a>
+
+  <div class="divider" aria-hidden="true"></div>
+
+  <div class="links external">
+    {externalLinks.map((link) => (
+      <a
+        href={link.href}
+        class="link external-link"
+        target={link.href.startsWith("http") ? "_blank" : undefined}
+        rel={link.href.startsWith("http") ? "noopener" : undefined}
+      >
+        {link.label}
+      </a>
+    ))}
+  </div>
+</nav>
+
+<nav class="nav-island mobile-nav" aria-label="Site navigation">
+  <div class="links">
+    {sectionLinks.map((link) => (
+      <a
+        href={link.href}
+        class={`link ${isActive(link.href) ? "active" : ""}`}
+      >
+        {isActive(link.href) ? `[${link.label}]` : link.label}
+      </a>
+    ))}
+  </div>
+
+  <details class="more">
+    <summary aria-label="More links">⋯</summary>
+    <div class="more-panel">
+      <a href="/rss.xml" class="link rss-link">RSS</a>
+      {externalLinks.map((link) => (
+        <a
+          href={link.href}
+          class="link external-link"
+          target={link.href.startsWith("http") ? "_blank" : undefined}
+          rel={link.href.startsWith("http") ? "noopener" : undefined}
+        >
+          {link.label}
+        </a>
+      ))}
+    </div>
+  </details>
+</nav>

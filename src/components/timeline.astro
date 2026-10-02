@@ -1,0 +1,109 @@
+---
+import "../styles/timeline.css";
+
+// TelemetryTimeline.astro
+// Vertical rail + telemetry log entries branching off each node.
+
+export interface LogEntry {
+  period: string;
+  status: string;
+  role: string;
+  org: string;
+  stack?: string[];
+  detail: string;
+}
+
+interface Props {
+  entries?: LogEntry[];
+}
+
+const {
+  entries = [
+    {
+      period: "08.2021 — 03.2024",
+      role: "Software Developer",
+      stack: [
+        "AWS SST",
+        "React",
+        "Next.js",
+        "Tailwind",
+        "TypeScript",
+        "Planetscale",
+        "DrizzleORM",
+        "TRPC",
+      ],
+      org: "Cloudify",
+      detail:
+        "Built API connectors and integration workflows across 25+ European clients on platforms like HubSpot and Pipedrive, cutting manual work by 70% while scaling onboarding and support systems.",
+    },
+    {
+      period: "09.2024 — Present",
+      role: "Software Development Engineer - II",
+      org: "Comcast",
+      stack: ["React", "TypeScript", "Node.js", "Microsoft Azure", "AWS"],
+      detail:
+        "Building a customer service chatbot for Sky Italia across web chat and IVR voice channels.",
+    },
+  ],
+} = Astro.props;
+---
+
+<div class="telemetry">
+  <div class="log-header">
+    <span>LOG // WRK_3XP</span>
+    <span>{entries.length} {entries.length === 1 ? "ENTRY" : "ENTRIES"}</span>
+  </div>
+
+  <ol class="rail">
+    {
+      entries.map((entry) => (
+        <li class="log-entry">
+          <span class="node" aria-hidden="true" />
+
+          <div class="log-line">
+            <div class="log-line-left">
+              <span class="prompt">&gt;</span>
+              <span class="value">{entry.org.toUpperCase()}</span>
+            </div>
+            <span class="timestamp">{entry.period}</span>
+          </div>
+
+          <div class="log-body">
+            <div class="field">
+              <>
+                <span class="key">[ROLE]</span>
+                <span class="value">{entry.role}</span>
+              </>
+            </div>
+            {entry.stack && (
+              <div class="field">
+                <span class="key">[STACK]</span>
+                <div class="value">
+                  {entry.stack.map((lang) => (
+                    <span>[{lang}]</span>
+                  ))}
+                </div>
+              </div>
+            )}
+            <div class="field">
+              <>
+                <span class="key">[NOTE]</span>
+                <span class="value">{entry.detail}</span>
+              </>
+            </div>
+          </div>
+        </li>
+      ))
+    }
+
+    <li class="log-entry end">
+      <span class="node end-node" aria-hidden="true"></span>
+      <div class="log-line">
+        <div class="log-line-left">
+          <span class="prompt">&gt;</span>
+          <span class="cursor">_</span>
+        </div>
+      </div>
+    </li>
+  </ol>
+</div>

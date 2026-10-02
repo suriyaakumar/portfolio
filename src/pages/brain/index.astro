@@ -1,0 +1,53 @@
+---
+import BaseLayout from "../../layouts/baseLayout.astro";
+import "../../styles/brain.css";
+
+interface Props {
+  username: string;
+  limit?: number;
+}
+
+const { limit = 6 } = Astro.props;
+const slots = Array.from({ length: limit }, (_, i) => i);
+---
+
+<BaseLayout title="Suriyaa Kumar | Brain" description="Curated activity statistics across developer sites">
+<div class="repos" id="github-repos">
+  <div class="log-header">
+    <span>LOG // R3P051T0R135</span>
+    <span id="repos-status">LOADING…</span>
+  </div>
+
+  <p id="repos-notice" class="notice"></p>
+
+  {slots.map((i) => (
+    <div class="repo-entry" id={`slot-${i}`} style="display: none;">
+      <div class="log-line">
+        <span class="prompt">&gt;</span>
+        <a class="name" id={`slot-${i}-name`} target="_blank" rel="noopener"></a>
+        <span class="stars" id={`slot-${i}-stars`}></span>
+      </div>
+      <div class="log-body">
+        <div class="field" id={`slot-${i}-lang-field`} style="display: none;">
+          <span class="key">[LANG]</span>
+          <span class="value" id={`slot-${i}-lang`}></span>
+        </div>
+        <div class="field">
+          <span class="key">[UPDATED]</span>
+          <span class="value" id={`slot-${i}-updated`}></span>
+        </div>
+        <div class="field" id={`slot-${i}-note-field`} style="display: none;">
+          <span class="key">[NOTE]</span>
+          <span class="value" id={`slot-${i}-note`}></span>
+        </div>
+      </div>
+    </div>
+  ))}
+
+  <p id="repos-sync" class="sync-time"></p>
+</div>
+</BaseLayout>
+
+<script>
+  import "../../scripts/brain";
+</script>

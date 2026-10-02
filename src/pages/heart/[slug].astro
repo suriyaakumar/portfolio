@@ -1,0 +1,74 @@
+---
+// src/pages/heart/[slug].astro
+import { getCollection, render } from "astro:content";
+import "../../styles/posts.css";
+import BaseLayout from "../../layouts/baseLayout.astro";
+import AskArchive from "../../components/askarchive.tsx";
+
+export async function getStaticPaths() {
+  const posts = await getCollection("blog", ({ data }) => !data.draft);
+
+  return posts.map((post) => {
+    const wordCount = post.body?.trim().split(/\s+/).length ?? 0;
+    const readingTime = Math.max(1, Math.round(wordCount / 200));
+    const printInches = ((wordCount / 250) * 9).toFixed(1);
+
+    return {
+      params: { slug: post.id },
+      props: { post: { ...post, wordCount, readingTime, printInches } },
+    };
+  });
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+---
+
+<BaseLayout
+  title={`${post.data.title}`}
+  description={`${post.data.description}`}
+>
+  <AskArchive client:load slot="aside"/>
+  <article>
+    <a href="/heart" class="back-link">
+      <span class="prompt">&lt;</span> HEART
+    </a>
+    <div class="post-header">
+      <h1>[{post.data.title}]</h1>
+      <div class="meta">
+        <div class="field">
+          <span class="key">[DATE]</span><span class="value"
+            >{
+              post.data.date.toLocaleDateString("en-US", {
+                year: "numeric",
+                month: "long",
+                day: "numeric",
+              })
+            }</span>
+        </div>
+        <div class="field">
+          <span class="key">[READ_TIME]</span><span class="value"
+            >{post.readingTime} min · {post.wordCount} words · {
+              post.printInches
+            }" printed</span>
+        </div>
+      </div>
+    </div>
+    <div class="content">
+      <Content />
+    </div>
+    <div class="share-block">
+      <button id="share-btn" class="share-trigger">[SHARE_ENTRY]</button>
+      <div id="share-fallback" class="share-fallback">
+        <a id="share-x" target="_blank" rel="noopener">X/TWITTER</a>
+        <a id="share-linkedin" target="_blank" rel="noopener">LINKEDIN</a>
+        <button id="share-copy">COPY_LINK</button>
+      </div>
+      <span id="share-status" class="share-status"></span>
+    </div>
+  </article>
+</BaseLayout>
+
+<script>
+  import "../../scripts/share";
+</script>

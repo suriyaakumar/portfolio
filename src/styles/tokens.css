@@ -1,0 +1,158 @@
+:root {
+    --font-body: "Source Serif 4", Georgia, serif;
+    --font-handwritten: "Kalam", cursive;
+    --font-mono: "JetBrains Mono", monospace;
+
+    --paper: #EDEAE1;
+    --paper-dim: #E3E0D6;
+    --paper-edge: #D8D4C7;
+
+    --ink: #2B2A26;
+    --ink-soft: #55524A;
+    --ink-faint: #8C887C;
+
+    --accent-face: #7A5C42;
+    --accent-brain: #3F5D54;
+    --accent-heart: #7A3B3B;
+}
+
+html,
+body {
+    width: 100%;
+    min-height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    min-height: 100vh;
+    width: 100%;
+    color: var(--ink);
+    font-family: var(--font-body);
+    background:
+        radial-gradient(ellipse 100% 70% at 25% -10%, rgba(255, 255, 255, 0.55) 0%, rgba(255, 255, 255, 0) 55%),
+        #E7E3D8;
+    box-shadow: inset 0 0 100px rgba(0, 0, 0, 0.08);
+}
+
+.post-layout {
+    width: 100%;
+    display: grid;
+    align-self: stretch;
+    box-sizing: border-box;
+    /* 3 column layout to center the main element, since i'm trying to center the content
+       the middle column is the main content which is set to max-width: 720px, the left and right columns are flexible to take up the remaining space */
+    grid-template-columns: minmax(0, 1fr) minmax(0, 720px) minmax(0, 1fr);
+    align-items: start;
+}
+
+.post-layout main {
+    width: 100%;
+    grid-column: 2;
+}
+
+.post-layout aside {
+    grid-column: 3;
+    width: 100%;
+    box-sizing: border-box;
+    position: relative;
+}
+
+main {
+    width: 100%;
+    padding: 4rem 1.5rem;
+    margin: 0 auto;
+    box-sizing: border-box;
+    align-items: center;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+}
+
+/* Tablet and below */
+@media (max-width: 768px) {
+    main {
+        padding: 3rem 1.25rem;
+    }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+    main {
+        padding: 2rem 1rem;
+    }
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0.35;
+    mix-blend-mode: normal;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.55' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    background-repeat: repeat;
+}
+
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin: 0;
+    font-family: var(--font-handwritten);
+    font-size: 1.75rem;
+    font-weight: 400;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.spoiler {
+    position: relative;
+    cursor: pointer;
+    display: inline;
+  }
+
+  .spoiler-toggle {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .spoiler-text {
+    background: var(--ink, #2b2b28);
+    color: transparent;
+    border-radius: 2px;
+    padding: 0 4px;
+    transition: all 0.15s ease;
+    background-image: url('/grain.svg');
+    background-blend-mode: overlay;
+  }
+
+  .spoiler-toggle:checked ~ .spoiler-text {
+    background: transparent;
+    color: var(--ink, #2b2b28);
+    padding: 0;
+  }
+
+  .spoiler-text::before {
+    content: "reveal";
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7em;
+    letter-spacing: 0.05em;
+    color: var(--paper, #f4f1ea);
+    text-transform: uppercase;
+  }
+
+  .spoiler-toggle:checked ~ .spoiler-text::before {
+    content: "";
+  }

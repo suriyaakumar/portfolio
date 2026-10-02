@@ -1,0 +1,41 @@
+---
+import "../styles/tokens.css";
+import Nav from "../components/nav.astro";
+import Analytics from "@vercel/analytics/astro";
+
+interface Props {
+	title: string;
+	description: string;
+	canonicalURL?: string; // optional override for edge cases
+}
+
+const { title, description, canonicalURL } = Astro.props;
+const canonical = canonicalURL ?? new URL(Astro.url.pathname, Astro.site);
+---
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<meta name="description" content={description} />
+		<link rel="icon" type="image/x-icon" href="/favicon.ico?v=2" />
+		<link rel="sitemap" href="/sitemap-index.xml" />
+		<link rel="canonical" href={canonical} />
+		<title>{title}</title>
+	</head>
+	<body>
+		<div class="post-layout">
+			<main>
+				<slot />
+			</main>
+			<aside>
+				<slot name="aside" />
+			</aside>
+		</div>
+		<footer>
+			<Nav />
+		</footer>
+		<Analytics />
+	</body>
+</html>

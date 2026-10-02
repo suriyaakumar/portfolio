@@ -1,0 +1,38 @@
+---
+// src/pages/404.astro
+// Astro auto-serves this file for any unmatched route.
+import BaseLayout from "../layouts/baseLayout.astro";
+import "../styles/404.css";
+---
+
+<BaseLayout title="404 — Suriyaa Kumar" description="You can't reach this page. 404!">
+  <div class="error-log">
+    <div class="log-header">
+      <span>LOG // ERROR</span>
+      <span>STATUS 404</span>
+    </div>
+
+    <div class="entry">
+      <div class="log-line">
+        <span class="prompt">&gt;</span>
+        <span class="code">404</span>
+        <span class="tag">[NOT_FOUND]</span>
+      </div>
+      <div class="log-body">
+        <div class="field">
+          <span class="key">[PATH]</span>
+          <span class="value" id="requested-path">unknown</span>
+        </div>
+        <div class="field">
+          <span class="key">[NOTE]</span>
+          <span class="value">Nothing recorded at this address. It may have moved, or never existed.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</BaseLayout>
+
+<script>
+  const pathEl = document.getElementById("requested-path");
+  if (pathEl) pathEl.textContent = window.location.pathname;
+</script>
