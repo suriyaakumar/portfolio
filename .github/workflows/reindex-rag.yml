@@ -2,7 +2,7 @@ name: reindex-rag
 
 on:
   push:
-    branches: [feat/portfolio_v2]
+    branches: [master]
     paths: ['src/content/blog/**']
   workflow_dispatch:
 
@@ -53,7 +53,7 @@ jobs:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           BLOG_REPO: suriyaakumar/portfolio
           CONTENT_PATH: src/content/blog
-          BLOG_BRANCH: feat/portfolio_v2
+          BLOG_BRANCH: master
         run: |
           python fetch.py
           python chunk.py
