@@ -1,0 +1,63 @@
+name: reindex-rag
+
+on:
+  push:
+    branches: [feat/portfolio_v2]
+    paths: ['src/content/blog/**']
+  workflow_dispatch:
+
+concurrency:
+  group: rag-ingest
+  cancel-in-progress: false
+
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+  ingest:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          repository: suriyaakumar/blog-rag-eval
+          path: rag
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - run: pip install -r rag/requirements.txt
+
+      - uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ vars.AWS_INGEST_ROLE_ARN }}
+          aws-region: ap-south-1
+
+      - name: Pull previous embeddings (enables hash reuse)
+        run: |
+            if aws s3api head-object \
+              --bucket blog-rag-eval-suriyaakumar \
+              --key embeddings.json >/dev/null 2>&1; then
+              aws s3 cp \
+                s3://blog-rag-eval-suriyaakumar/embeddings.json \
+                rag/embeddings.json
+            else
+              echo "No previous embeddings found; starting fresh."
+            fi
+
+      - name: Run pipeline
+        working-directory: rag
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          BLOG_REPO: suriyaakumar/portfolio
+          CONTENT_PATH: src/content/blog
+          BLOG_BRANCH: feat/portfolio_v2
+        run: |
+          python fetch.py
+          python chunk.py
+          python embed.py
+
+      - name: Upload embeddings
+        run: aws s3 cp rag/embeddings.json s3://blog-rag-eval-suriyaakumar/embeddings.json
