@@ -1,51 +1,81 @@
-# Astro Starter Kit: Minimal
+# Suriyaa Kumar — Portfolio
+
+The source for [suriyaa.dev](https://suriyaa.dev), a personal portfolio and writing site built around three sections:
+
+- **Face** (`/`) — an introduction and timeline.
+- **Brain** (`/brain`) — a snapshot of GitHub repository activity.
+- **Heart** (`/heart`) — a dated archive of writing, with an RSS feed at `/rss.xml`.
+
+Individual blog posts include an interactive **Ask the Archive** panel, which answers questions using the site's writing.
+
+## Tech stack
+
+- [Astro](https://astro.build/) for the site and Markdown content
+- React for the interactive Ask the Archive panel
+- [Vercel](https://vercel.com/) adapter for deployment
+- GitHub Actions to reindex the blog archive when its posts change
+
+## Run locally
+
+Requirements: Node.js `>=22.12.0` and pnpm.
 
 ```sh
-pnpm create astro@latest -- --template minimal
+pnpm install
+pnpm dev
 ```
 
-<!-- ASTRO:REMOVE:START -->
+Astro starts the development server at [localhost:4321](http://localhost:4321).
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/minimal)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/minimal)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/minimal/devcontainer.json)
+| Command | Description |
+| --- | --- |
+| `pnpm dev` | Start the local development server |
+| `pnpm build` | Build the production site into `dist/` |
+| `pnpm preview` | Preview the production build locally |
+| `pnpm astro -- --help` | Show Astro CLI help |
 
-<!-- ASTRO:REMOVE:END -->
+## Writing
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+Add Markdown files under `src/content/blog/`. Each post uses this frontmatter:
 
-## 🚀 Project Structure
+```yaml
+---
+title: "Post title"
+description: "A short description of the post"
+date: 2026-01-31
+tags: ["tech"]
+draft: false
+---
+```
 
-Inside of your Astro project, you'll see the following folders and files:
+`title`, `description`, and `date` are required. `tags` defaults to an empty list and `draft` defaults to `false`. Draft posts are excluded from the archive and generated post pages. Posts are ordered newest first.
+
+## Ask the Archive
+
+The browser sends questions to the site's `/api/ask` endpoint. The endpoint forwards them to the configured RAG service; set these environment variables in the deployment environment:
+
+| Variable | Purpose |
+| --- | --- |
+| `RAG_ENDPOINT` | URL of the RAG service |
+| `APP_SECRET` | Shared secret sent to the RAG service as `X-App-Secret` |
+
+These are server-side settings. Do not expose the secret in client-side code or commit it to the repository.
+
+The GitHub Actions workflow `.github/workflows/reindex-rag.yml` runs when files under `src/content/blog/` change on `master` (or can be started manually). It checks out the separate `suriyaakumar/blog-rag-eval` repository, fetches the blog content, builds embeddings with Gemini, and uploads the resulting `embeddings.json` to S3. Workflow configuration requires the `AWS_INGEST_ROLE_ARN` repository variable, a `GEMINI_API_KEY` repository secret, and an AWS role configured for GitHub Actions OIDC with access to the embeddings bucket.
+
+## Project structure
 
 ```text
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
+src/
+├── components/       # Navigation, profile sections, and Ask the Archive UI
+├── content/blog/     # Markdown posts
+├── pages/            # Face, Brain, Heart, RSS, and API routes
+├── scripts/          # Browser-side behavior
+├── styles/           # Site styles
+└── layouts/          # Shared page layout
+public/               # Static assets
+.github/workflows/    # Blog archive reindex workflow
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+## Deployment
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
-
-Any static assets, like images, can be placed in the `public/` directory.
-
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `pnpm install`             | Installs dependencies                            |
-| `pnpm dev`             | Starts local dev server at `localhost:4321`      |
-| `pnpm build`           | Build your production site to `./dist/`          |
-| `pnpm preview`         | Preview your build locally, before deploying     |
-| `pnpm astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `pnpm astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+The Astro configuration uses the Vercel adapter. Deploy the repository to Vercel and configure `RAG_ENDPOINT` and `APP_SECRET` in the project's environment settings if the Ask the Archive feature is enabled. The production site URL and sitemap are configured for `https://suriyaa.dev`.
