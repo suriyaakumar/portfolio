@@ -1,7 +1,6 @@
-export const prerender = false;
+import { getSecret } from 'astro:env/server';
 
-const RAG_ENDPOINT = process.env.RAG_ENDPOINT
-const APP_SECRET = process.env.APP_SECRET
+export const prerender = false;
 
 export async function POST({ request }: { request: Request }) {
     let body;
@@ -16,6 +15,9 @@ export async function POST({ request }: { request: Request }) {
     if (!question) {
         return new Response(JSON.stringify({ error: 'Missing question' }), { status: 400 });
     }
+
+    const RAG_ENDPOINT = getSecret('RAG_ENDPOINT');
+    const APP_SECRET = getSecret('APP_SECRET');
 
     if (!RAG_ENDPOINT || !APP_SECRET) {
     return new Response(JSON.stringify({ error: "Server misconfiguration" }), {
