@@ -9,7 +9,8 @@
     "dev": "astro dev --host",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "toolbar:disable": "astro preferences disable devToolbar"
   },
   "dependencies": {
     "@astrojs/react": "^6.0.5",

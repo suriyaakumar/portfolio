@@ -70,7 +70,22 @@ export default function AskArchive() {
 
   return (
     <div className="ask-archive">
-      <div className="ask-history">
+      <div className={`ask-history${history.length === 0 ? ' ask-history-empty' : ''}`}>
+        {history.length === 0 && (
+          <section className="ask-welcome" aria-labelledby="ask-welcome-title">
+            <span className="ask-welcome-label">[MEMORY]</span>
+            <h1 id="ask-welcome-title">Ask the archive</h1>
+            <p>Explore the ideas and themes in my writing.</p>
+            <ul>
+              <li>Ask about a topic, an idea, or a specific post.</li>
+              <li>Include enough context. Each question is answered on its own.</li>
+            </ul>
+            <p className="ask-welcome-note">
+              AI-generated answers can be incomplete or inaccurate. Check the
+              original posts in <a href="/heart">the writing archive</a>.
+            </p>
+          </section>
+        )}
         {history.map((exchange) => (
           <div key={exchange.id} className="exchange">
             <div className="question">
@@ -97,7 +112,7 @@ export default function AskArchive() {
             )}
           </div>
         ))}
-        <div ref={historyEndRef} />
+        {history.length > 0 && <div ref={historyEndRef} />}
       </div>
       <form onSubmit={handleSubmit} className="ask-input-row">
         <textarea

@@ -25,14 +25,9 @@ const canonical = canonicalURL ?? new URL(Astro.url.pathname, Astro.site);
 		<title>{title}</title>
 	</head>
 	<body>
-		<div class="post-layout">
-			<main>
-				<slot />
-			</main>
-			<aside>
-				<slot name="aside" />
-			</aside>
-		</div>
+		<main>
+			<slot />
+		</main>
 		<footer>
 			<Nav />
 		</footer>

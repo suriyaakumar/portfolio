@@ -1,9 +1,7 @@
 ---
-// src/pages/heart/[slug].astro
 import { getCollection, render } from "astro:content";
 import "../../styles/posts.css";
 import BaseLayout from "../../layouts/baseLayout.astro";
-import AskArchive from "../../components/askarchive.tsx";
 
 export async function getStaticPaths() {
   const posts = await getCollection("blog", ({ data }) => !data.draft);
@@ -28,7 +26,6 @@ const { Content } = await render(post);
   title={`${post.data.title}`}
   description={`${post.data.description}`}
 >
-  <AskArchive client:load slot="aside"/>
   <article>
     <a href="/heart" class="back-link">
       <span class="prompt">&lt;</span> HEART

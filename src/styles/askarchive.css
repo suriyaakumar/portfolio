@@ -1,22 +1,86 @@
 .ask-archive {
-    position: fixed;
-    top: 4rem;
-    width: calc((100vw - 720px) / 2 - 2rem);
-    height: calc(100vh - 4rem);
-    right: 1rem;
+    width: 100%;
+    max-width: 700px;
+    height: 80vh;
+    height: 80dvh;
     display: flex;
     flex-direction: column;
     box-sizing: border-box;
 }
 
+/* Mobile */
+@media (max-width: 480px) {
+    .ask-archive {
+        height: 87vh;
+        height: 87dvh;
+    }
+}
+
 .ask-history {
     flex-grow: 1;
+    min-height: 0;
     width: 100%;
+    box-sizing: border-box;
     gap: 2rem;
     overflow-y: auto;
     padding-right: 1rem;
     scrollbar-width: thin;
     scrollbar-color: var(--ink-faint) transparent;
+}
+
+.ask-history-empty {
+    display: flex;
+    flex-direction: column;
+}
+
+.ask-welcome {
+    width: 100%;
+    max-width: 32rem;
+    margin: auto;
+    padding: 1.5rem 0;
+    box-sizing: border-box;
+    flex-shrink: 0;
+    text-align: left;
+    color: var(--ink-soft);
+    font-family: var(--font-body);
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+.ask-welcome-label {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.05em;
+    color: var(--ink-faint);
+}
+
+.ask-welcome h1 {
+    margin: 0.75rem 0 1rem;
+    font-size: clamp(1.5rem, 5vw, 2rem);
+    text-align: left;
+}
+
+.ask-welcome p {
+    margin: 0 0 1rem;
+}
+
+.ask-welcome ul {
+    margin: 0 0 1.5rem;
+    padding-left: 1.25rem;
+}
+
+.ask-welcome li + li {
+    margin-top: 0.5rem;
+}
+
+.ask-welcome .ask-welcome-note {
+    margin-bottom: 0;
+    font-size: 0.875rem;
+}
+
+.ask-welcome a {
+    color: var(--accent-heart);
+    text-underline-offset: 0.2em;
 }
 
 .ask-history::-webkit-scrollbar {
@@ -72,7 +136,7 @@ textarea:focus {
     flex-shrink: 0;
 }
 
-.ask-input-row input {
+.ask-input-row textarea {
     flex: 1;
     min-width: 0;
     border: none;
@@ -84,12 +148,12 @@ textarea:focus {
     outline: none;
 }
 
-.ask-input-row input::placeholder {
+.ask-input-row textarea::placeholder {
     color: var(--ink-faint);
     font-style: italic;
 }
 
-.ask-input-row input:focus {
+.ask-input-row textarea:focus {
     background: var(--paper);
 }
 
@@ -191,37 +255,4 @@ textarea:focus {
 .sources li::before {
     content: "› ";
     color: var(--accent-heart);
-}
-
-
-.ask-trigger {
-    display: none;
-}
-
-@media (max-width: 768px) {
-    .ask-trigger {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        position: fixed;
-        top: 40%;
-        right: 0.5rem;
-        z-index: 100;
-        background: var(--paper-dim);
-        border: 1px solid var(--paper-edge);
-        border-right: none;
-        border-radius: 4px 0 0 4px;
-        padding: 0.75rem 0.5rem;
-        font-family: var(--font-mono);
-        font-size: 0.75rem;
-        letter-spacing: 0.05em;
-        color: var(--accent-heart);
-        writing-mode: vertical-rl;
-        text-orientation: mixed;
-        cursor: pointer;
-    }
-
-    .ask-archive {
-        display: none;
-    }
 }
