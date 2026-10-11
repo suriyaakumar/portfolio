@@ -11,7 +11,7 @@ export async function POST({ request }: { request: Request }) {
         return new Response(JSON.stringify({ error: 'Invalid JSON' }), { status: 400 });
     }
 
-    const question = body.question;
+    const { question, history }= body;
     if (!question) {
         return new Response(JSON.stringify({ error: 'Missing question' }), { status: 400 });
     }
@@ -33,7 +33,7 @@ export async function POST({ request }: { request: Request }) {
                 'Content-Type': 'application/json',
                 'X-App-Secret': APP_SECRET
             },
-            body: JSON.stringify({ question }),
+            body: JSON.stringify({ question, history: Array.isArray(history) ? history.slice(-4) : [] }),
         });
 
         const data = await response.json();

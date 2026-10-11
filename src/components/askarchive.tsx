@@ -33,6 +33,11 @@ export default function AskArchive() {
     const currentQuestion = question;
     setQuestion('');
 
+    const priorTurns = history
+      .filter((ex) => ex.status === 'done')
+      .slice(-4)
+      .map((ex) => ({ question: ex.question, answer: ex.answer }));
+
     setHistory((prev) => [
       ...prev,
       { id, question: currentQuestion, answer: '', sources: [], status: 'loading' }
@@ -45,8 +50,9 @@ export default function AskArchive() {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ question }),
+        body: JSON.stringify({ question: currentQuestion, history: priorTurns }),
       });
+
       const data = await response.json();
 
       if (!response.ok) {
