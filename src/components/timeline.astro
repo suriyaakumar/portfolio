@@ -6,11 +6,11 @@ import "../styles/timeline.css";
 
 export interface LogEntry {
   period: string;
-  status: string;
+  status?: string;
   role: string;
   org: string;
   stack?: string[];
-  detail: string;
+  detail: string[];
 }
 
 interface Props {
@@ -19,6 +19,18 @@ interface Props {
 
 const {
   entries = [
+    {
+      period: "09.2024 — Present",
+      role: "Software Development Engineer - II",
+      org: "Comcast",
+      stack: ["React", "TypeScript", "Node.js", "Microsoft Azure", "AWS"],
+      detail: [
+        "Expanded customer self-service across web chat and IVR voice, covering order tracking, billing, refunds, streaming and mobile journeys.",
+        "Built reusable TypeScript services and conversational infrastructure that reduced duplicated implementation across customer flows.",
+        "Integrated backend APIs, shared routing and state mechanisms to support complex multi-step customer interactions across product domains.",
+        "Strengthened production delivery through CI/CD and release-validation work for customer-facing conversational features.",
+      ],
+    },
     {
       period: "08.2021 — 03.2024",
       role: "Software Developer",
@@ -33,16 +45,12 @@ const {
         "TRPC",
       ],
       org: "Cloudify",
-      detail:
-        "Built API connectors and integration workflows across 25+ European clients on platforms like HubSpot and Pipedrive, cutting manual work by 70% while scaling onboarding and support systems.",
-    },
-    {
-      period: "09.2024 — Present",
-      role: "Software Development Engineer - II",
-      org: "Comcast",
-      stack: ["React", "TypeScript", "Node.js", "Microsoft Azure", "AWS"],
-      detail:
-        "Building a customer service chatbot for Sky Italia across web chat and IVR voice channels.",
+      detail: [
+        "Built full-stack B2B SaaS features with TypeScript, Next.js, tRPC and AWS for 25+ European customers.",
+        "Developed reusable CRM, ERP, payments and e-commerce connectors that cut repeated integration effort by roughly 70%.",
+        "Built event-driven Lambda and SQS workflows supporting orders, subscriptions and invoicing across customer integrations.",
+        "Designed validation and data-handling flows across 50k+ integration records while helping scale onboarding and connector delivery.",
+      ],
     },
   ],
 } = Astro.props;
@@ -88,7 +96,11 @@ const {
             <div class="field">
               <>
                 <span class="key">[NOTE]</span>
-                <span class="value">{entry.detail}</span>
+                <div class="value">
+                  {entry.detail.map((detail) => (
+                    <span>{detail}</span>
+                  ))}
+                </div>
               </>
             </div>
           </div>
