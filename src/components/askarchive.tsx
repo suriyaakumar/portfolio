@@ -62,7 +62,7 @@ export default function AskArchive() {
 
       setHistory((prev) => prev.map((exchange) =>
         exchange.id === id
-          ? { ...exchange, answer: data.answer, sources: data.sources, status: 'done' }
+          ? { ...exchange, answer: data.answer ?? '', sources: Array.isArray(data.sources) ? data.sources : [], status: 'done' }
           : exchange
       ));
     }
@@ -103,9 +103,11 @@ export default function AskArchive() {
             {exchange.status === 'error' && <div className="answer">Error: {exchange.error}</div>}
             {exchange.status === 'done' && (
               <div className="answer">
+                <strong>A:</strong>
                 <ReactMarkdown remarkPlugins={[remarkGfm]}>
                     {exchange.answer}
                 </ReactMarkdown>
+                {Array.isArray(exchange.sources) && exchange.sources.length > 0 && (
                   <div className="sources">
                     <strong>Sources:</strong>
                     <ul>
