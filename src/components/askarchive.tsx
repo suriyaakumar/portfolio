@@ -57,7 +57,7 @@ export default function AskArchive() {
       const data = await response.json();
 
       if (!response.ok) {
-        throw new Error("Failed to get answer");
+        throw new Error(data.message || `Request failed with status ${response.status}`);
       }
 
       setHistory((prev) => prev.map((exchange) =>
@@ -67,9 +67,13 @@ export default function AskArchive() {
       ));
     }
     catch (err) {
+      const message =
+        err instanceof Error
+          ? err.message
+          : 'Something went wrong.';
       setHistory((prev) => prev.map((exchange) =>
         exchange.id === id
-          ? { ...exchange, answer: '', sources: [], status: 'error', error: 'Failed to get answer' }
+          ? { ...exchange, answer: '', sources: [], status: 'error', error: message }
           : exchange
       ));
     }
