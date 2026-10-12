@@ -84,11 +84,12 @@ export default function AskArchive() {
             <p>Explore the ideas and themes in my writing.</p>
             <ul>
               <li>Ask about a topic, an idea, or a specific post.</li>
-              <li>Include enough context. Each question is answered on its own.</li>
+              <li>Follow-up questions can use the recent conversation for context.</li>
             </ul>
             <p className="ask-welcome-note">
-              AI-generated answers can be incomplete or inaccurate. Check the
-              original posts in <a href="/heart">the writing archive</a>.
+              MEMORY only answers from the writing archive.
+              AI-generated answers can still be incomplete or inaccurate.
+              Check the original posts in <a href="/heart">the writing archive</a>.
             </p>
           </section>
         )}
