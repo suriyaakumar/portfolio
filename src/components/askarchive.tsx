@@ -1,7 +1,8 @@
 import { useEffect, useRef, useState } from 'react';
 import '../styles/tokens.css'
 import '../styles/askarchive.css';
-
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 type Source = {
   title: string;
   score: number;
@@ -102,8 +103,9 @@ export default function AskArchive() {
             {exchange.status === 'error' && <div className="answer">Error: {exchange.error}</div>}
             {exchange.status === 'done' && (
               <div className="answer">
-                <strong>A:</strong> {exchange.answer}
-                {exchange.sources.length > 0 && (
+                <ReactMarkdown remarkPlugins={[remarkGfm]}>
+                    {exchange.answer}
+                </ReactMarkdown>
                   <div className="sources">
                     <strong>Sources:</strong>
                     <ul>

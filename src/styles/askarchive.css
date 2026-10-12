@@ -21,6 +21,8 @@
     min-height: 0;
     width: 100%;
     box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
     gap: 2rem;
     overflow-y: auto;
     padding-right: 1rem;
