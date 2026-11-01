@@ -21,7 +21,7 @@ Nope! It is ruined in typical Tappei fashion, as Rem awakens without her memorie
 
 Wait a minute! Let me give you some context before I reminisce...
 
-I was 21 when I discovered Re:Zero and it profoundly changed my outlook on life and it is by far, my favorite anime of all time (Assassination Classroom comes close). The anime is not your typical isekai where the unremarkable main character gets killed by [Truck kun](https://en.wikipedia.org/wiki/Truck-kun) & is transported to a fantasy world where they magically become capable and is bestowed with fame, glory and fortune.
+I was 21 when I discovered Re:Zero and it profoundly changed my outlook on life and it is by far, my favorite anime of all time (Assassination Classroom comes close). The anime is not your typical isekai where the unremarkable main character gets killed by [Truck kun](https://en.wikipedia.org/wiki/Truck-kun) & is transported to a fantasy world where they magically become capable and are bestowed with fame, glory and fortune.
 
 Instead, **Subaru Natsuki** is a guy with an inferiority complex, borne out of not being able to get out of his dad's shadow. One fine day, he is magically transported to a kingdom called Lugnica, with a horrifying ability to resurrect after death to a seemingly random checkpoint in the past, while everyone else doesn't remember what happened in the previous loop. A mysterious Witch makes sure that Subaru doesn't reveal it to anyone.
 
@@ -51,7 +51,7 @@ Subaru is mentally destroyed by the multiple failed attempts to save everyone. H
 
 Feeling hopeless and helpless, Subaru decides to abandon everyone and asks Rem to elope with him. He does this because he feels unable to save everyone and tries to use Rem to escape his predicament.
 
-Rem senses that something's wrong with Subaru and rejects his proposal. She proceeds to do something so unexpected that I was kinda shook when I watched it.
+She proceeds to do something so unexpected that I was kinda shook when I watched it.
 
 She confesses that she desperately wants the future he wants but not when Subaru is broken down and has given up on people and sees her as a means for escapism. She then describes her imagined life with Subaru in great detail, from a home to jobs to owning a small shop to marriage to kids. She says that her ideal death is passing away before Subaru, surrounded by her children and grandchildren.
 
@@ -76,9 +76,9 @@ He calls himself incompetent? She points out it doesn't make him worthless.
 
 He calls himself inadequate? She comforts him by saying that he's her hero and made her realize her self-worth.
 
-Every little thing that he did that he didn't think too much about, she noticed.
+Every little thing that he did that he didn't think too much about, She noticed.
 
-Every insignificant quirk that he had? she noticed.
+Every insignificant quirk that he had? She noticed.
 
 The voice that comforted her? She loves it.
 
@@ -104,9 +104,9 @@ Subaru promises to be the hero Rem sees him as and Rem promises to stick by him 
 
 An unconventional romance that isn't just centred on shallow traits and actually treats people with respect? The anime characters are not mainly for fan service and the protagonist is not a power fantasy? Sign me the fuck up.
 
-With the power of God and anime on his side, Subaru defeats the big bad of season 1. It's actually more nuanced but, I want you to watch the anime to see how it goes...
+With the power of God and anime on his side, Subaru defeats the big bad of season 1. It's actually more nuanced, but I want you to watch the anime to see how it goes...
 
-In season 2, Rem gets attacked by a villain who has the power to devour anyone's name and memories. This results in Rem losing her consciousness and everyone forget who Rem is, except for Subaru. Yes, her own twin sister forgets her too. I would love to describe season 2 but please, do me a favor, go watch it. It's good.
+In season 2, Rem gets attacked by a villain who has the power to devour anyone's name and memories. This results in Rem losing her consciousness and everyone forgets who Rem is, except for Subaru. Yes, her own twin sister forgets her too. I would love to describe season 2 but please, do me a favor, go watch it. It's good.
 
 # [PRESENT DAY]
 
@@ -114,7 +114,7 @@ My interest in Re:Zero went into a coma around the time Rem entered a coma-like 
 
 It's surprising to me that I still love and care for Rem after all these years. I suppose that's a testament to the enduring power of memories and affection.
 
-I have to now catch up to two whole seasons of Re:Zero and see what Natsuki Subaru and dearest of all, Rem is up to. It's a bittersweet irony to remember a beloved character that everyone, in-universe forgot about. And, no more fucking "Who's Rem?" jokes, alright?
+I have to now catch up to two whole seasons of Re:Zero and see what Natsuki Subaru, Emilia and dearest of all, Rem are up to. It's a bittersweet irony to remember a beloved character that everyone, in-universe forgot about. And, no more fucking "Who's Rem?" jokes, alright?
 
 PS: Here's the ending episode track of season 1. Here's a glimpse into my playlists from back then. Sayonara !!!
 
