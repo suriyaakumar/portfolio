@@ -1,6 +1,9 @@
 
   article {
+    width: 100%;
     max-width: 700px;
+    min-width: 0;
+    box-sizing: border-box;
     text-align: left;
   }
 
