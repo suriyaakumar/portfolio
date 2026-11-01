@@ -79,11 +79,36 @@
     text-align: left;
   }
 
+  .content img {
+      display: block;
+      max-width: 100%;
+      height: auto;
+      margin: 1.5rem auto;
+      border-radius: 8px;
+  }
+
+  .content figure {
+      margin: 2.5rem 0;
+      max-width: 100%;
+  }
+
+  .content figcaption {
+      margin-top: 0.75rem;
+      font-family: monospace;
+      font-size: 0.7rem;
+      line-height: 1.6;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--muted-foreground, #737373);
+      align-items: center;
+        align-content: center;
+        align-self: center;
+  }
+
   .content p {
     text-align: left;
     margin-bottom: 1.25rem;
   }
-
 
   .content h2 {
     font-family: var(--font-handwritten, var(--font-body));

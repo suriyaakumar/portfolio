@@ -10,6 +10,10 @@ import vercel from '@astrojs/vercel';
 export default defineConfig({
   site: "https://suriyaa.dev",
   integrations: [sitemap(), react()],
+  image: {
+    responsiveStyles: true,
+    layout: "constrained",
+  },
   vite: {
     // Keep production builds from replacing a running dev server's React runtime.
     cacheDir: process.env.NODE_ENV === 'production'
