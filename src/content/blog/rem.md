@@ -7,7 +7,7 @@ tags: ["tech"]
 
 <figure>
 
-![Greatest Japanese waifu of all-time, Rem from Re:Zero](/src/assets/blog/rem/rem.jpg)
+![Greatest Japanese waifu of all-time, Rem from Re:Zero](../../assets/blog/rem/rem.jpg)
 
 <figcaption>Is it her? Oh yeah, it really is, her.</figcaption>
 
