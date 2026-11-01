@@ -9,6 +9,8 @@ const title = document.title;
     `https://twitter.com/intent/tweet?url=${encodeURIComponent(url)}&text=${encodeURIComponent(title)}`;
 (document.getElementById("share-linkedin") as HTMLAnchorElement).href =
     `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}`;
+(document.getElementById("share-coffee") as HTMLAnchorElement).href =
+    `https://www.buymeacoffee.com/suriyaakumar`;
 
 btn?.addEventListener("click", async () => {
     if (navigator.share) {
