@@ -1,53 +1,41 @@
 ---
 import BaseLayout from "../../layouts/baseLayout.astro";
+import ProjectEntry from "../../components/projectentry.astro";
+import { getCollection } from "astro:content";
+
 import "../../styles/brain.css";
 
-interface Props {
-  username: string;
-  limit?: number;
-}
-
-const { limit = 6 } = Astro.props;
-const slots = Array.from({ length: limit }, (_, i) => i);
+const projects = (await getCollection("projects")).sort(
+  (a, b) => a.data.order - b.data.order,
+);
 ---
 
-<BaseLayout title="Suriyaa Kumar | Brain" description="Curated activity statistics across developer sites">
-<div class="repos" id="github-repos">
-  <div class="log-header">
-    <span>LOG // R3P051T0R135</span>
-    <span id="repos-status">LOADING…</span>
-  </div>
+<BaseLayout
+  title="Suriyaa Kumar | Brain"
+  description="Selected engineering projects, experiments, and technical work."
+>
+  <main class="brain">
+    <header class="log-header">
+      <span>LOG // S3L3CT3D_W0RK</span>
+      <span>{String(projects.length).padStart(2, "0")} ENTRIES</span>
+    </header>
 
-  <p id="repos-notice" class="notice"></p>
-
-  {slots.map((i) => (
-    <div class="repo-entry" id={`slot-${i}`} style="display: none;">
-      <div class="log-line">
-        <span class="prompt">&gt;</span>
-        <a class="name" id={`slot-${i}-name`} target="_blank" rel="noopener"></a>
-        <span class="stars" id={`slot-${i}-stars`}></span>
-      </div>
-      <div class="log-body">
-        <div class="field" id={`slot-${i}-lang-field`} style="display: none;">
-          <span class="key">[LANG]</span>
-          <span class="value" id={`slot-${i}-lang`}></span>
-        </div>
-        <div class="field">
-          <span class="key">[UPDATED]</span>
-          <span class="value" id={`slot-${i}-updated`}></span>
-        </div>
-        <div class="field" id={`slot-${i}-note-field`} style="display: none;">
-          <span class="key">[NOTE]</span>
-          <span class="value" id={`slot-${i}-note`}></span>
-        </div>
-      </div>
+    <div class="projects">
+      {
+        projects.map((project, index) => (
+          <ProjectEntry project={project} index={index + 1} />
+        ))
+      }
     </div>
-  ))}
 
-  <p id="repos-sync" class="sync-time"></p>
-</div>
+    <footer class="brain-footer">
+      <a
+        href="https://github.com/suriyaakumar"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        [EXPLORE ALL REPOSITORIES ↗]
+      </a>
+    </footer>
+  </main>
 </BaseLayout>
-
-<script>
-  import "../../scripts/brain";
-</script>

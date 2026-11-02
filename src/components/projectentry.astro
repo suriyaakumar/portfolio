@@ -1,0 +1,75 @@
+---
+import type { CollectionEntry } from "astro:content";
+
+interface Props {
+    project: CollectionEntry<"projects">;
+    index: number;
+}
+
+const { project, index } = Astro.props;
+
+const { title, subtitle, description, stack, highlights, links } = project.data;
+
+const number = String(index).padStart(2, "0");
+
+const projectLinks = [
+    { label: "LIVE", href: links.demo },
+    { label: "SOURCE", href: links.source },
+    { label: "WRITE-UP", href: links.article },
+].filter((link): link is { label: string; href: string } => Boolean(link.href));
+---
+
+<article class="project-entry">
+    <div class="project-heading">
+        <span class="prompt" aria-hidden="true">&gt;</span>
+        <span class="project-number">{number} /</span>
+        <h2 class="project-title">{title}</h2>
+    </div>
+
+    <div class="project-body">
+        <p class="project-subtitle">{subtitle}</p>
+
+        <p class="project-description">{description}</p>
+
+        <div class="project-meta">
+            <span>[STACK]</span>
+            <span>{stack.join(" · ")}</span>
+        </div>
+
+        {
+            highlights.length > 0 && (
+                <div class="project-engineering">
+                    <span class="engineering-label">[ENGINEERING]</span>
+
+                    <ul>
+                        {highlights.map((highlight) => (
+                            <li>{highlight}</li>
+                        ))}
+                    </ul>
+                </div>
+            )
+        }
+
+        {
+            projectLinks.length > 0 && (
+                <nav class="project-links" aria-label={`${title} links`}>
+                    {projectLinks.map(({ label, href }) => (
+                        <a
+                            href={href}
+                            target={
+                                href.startsWith("http") ? "_blank" : undefined
+                            }
+                            rel={
+                                href.startsWith("http")
+                                    ? "noopener noreferrer"
+                                    : undefined
+                            }
+                        >
+                            [{label} ↗]
+                        </a>
+                    ))}
+                </nav>
+            )
+        }
+    </div>
+</article>

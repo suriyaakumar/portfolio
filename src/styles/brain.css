@@ -1,108 +1,324 @@
-.repos {
-  width: 700px;
+/* =========================================
+   BRAIN — Main container
+   ========================================= */
+
+.brain {
+  width: 100%;
+  max-width: 700px;
+  min-width: 0;
+  margin-inline: auto;
+
   font-family: var(--font-mono, monospace);
   font-size: 1rem;
   text-align: left;
+
+  --brain-muted: #686459;
 }
 
-@media (max-width: 768px) {
-  .repos {
-    width: 100%;
-  }
-}
+/* =========================================
+   Header
+   ========================================= */
 
-.log-header {
+.brain > .log-header {
   display: flex;
-  width: 100%;
-  box-sizing: border-box;
+  flex-direction: row;
   justify-content: space-between;
-  font-size: 0.85rem;
+  align-items: baseline;
+  gap: 1rem;
+
+  width: 100%;
+  max-width: none;
+  box-sizing: border-box;
+
+  border-bottom: 1px solid var(--paper-edge, #d8d4c7);
+
+  color: var(--brain-muted);
+  font-size: 1rem;
   font-weight: 600;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-  color: var(--ink-faint, #8A877C);
-  padding-bottom: 0.5rem;
-  margin-bottom: 1.5rem;
-  border-bottom: 1px solid var(--paper-edge, #D8D4C7);
+  line-height: 1.6;
+  letter-spacing: 0.04em;
+  text-align: left;
 }
 
-.notice {
-  color: var(--ink-faint, #8A877C);
-  font-size: 0.85rem;
+.brain > .log-header > span {
+  display: inline;
+  width: auto;
+  margin: 0;
+  padding: 0;
 }
 
-.notice:empty {
-  display: none;
+/* =========================================
+   Project entries
+   ========================================= */
+
+.brain .projects {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+
+  width: 100%;
+  min-width: 0;
+  margin: 0;
+  padding: 0;
 }
 
-.repo-entry {
-  margin-bottom: 1.75rem;
+.brain .project-entry {
+  width: 100%;
+  min-width: 0;
+  margin: 0;
+  box-sizing: border-box;
 }
 
-.log-line {
+.brain .project-heading {
   display: flex;
   align-items: baseline;
+  justify-content: flex-start;
   gap: 0.6rem;
-  margin-bottom: 0.4rem;
+
+  margin: 0 0 0.5rem;
+  padding: 0;
+  text-align: left;
 }
 
-.prompt {
-  color: var(--accent, #2A2A28);
+.brain .prompt {
+  color: var(--ink, #2a2a28);
   font-weight: 700;
 }
 
-.name {
-  color: var(--ink, #2A2A28);
+.brain .project-number {
+  color: var(--brain-muted);
+  font-size: 1rem;
+}
+
+.brain .project-title {
+  display: inline;
+  width: auto;
+  max-width: none;
+  margin: 0;
+  padding: 0;
+
+  color: var(--ink, #2a2a28);
+  font-family: var(--font-mono, monospace);
+  font-size: 1.4rem;
   font-weight: 700;
-  font-size: 1.1rem;
-  text-decoration: none;
-  border-bottom: 1px solid transparent;
-}
-
-.name:hover {
-  border-bottom-color: var(--accent, #2A2A28);
-}
-
-.stars {
-  font-size: 0.9rem;
-  color: var(--ink, #8A877C);
-}
-
-.log-body {
-  padding-left: 1.4rem;
-  border-left: 1px solid var(--paper-edge, #D8D4C7);
-}
-
-.field {
-  display: flex;
-  align-items: flex-start;
-  gap: 0.75rem;
-  margin-bottom: 0.3rem;
-}
-
-.field .key {
-  flex-shrink: 0;
-  width: 5.5rem;
-  color: var(--ink-faint, #8A877C);
-  font-size: 0.8rem;
-  font-weight: 600;
-}
-
-.field .value {
-  color: var(--ink-soft, #55524A);
-  font-weight: 500;
   line-height: 1.5;
-  flex: 1;
+  letter-spacing: -0.02em;
+  text-align: left;
+  text-transform: none;
+}
+
+/* =========================================
+   Project body
+   ========================================= */
+
+.brain .project-body {
+  width: 100%;
   min-width: 0;
+  margin-left: 0;
+  padding-left: 1.4rem;
+  box-sizing: border-box;
+
+  border-left: 1px solid var(--paper-edge, #d8d4c7);
 }
 
-.sync-time {
-  margin-top: 2rem;
-  font-size: 0.7rem;
-  color: var(--ink-faint, #8A877C);
-  opacity: 0.7;
+.brain .project-subtitle {
+  margin: 0 0 0.75rem;
+
+  color: var(--brain-muted);
+  font-size: 0.9rem;
+  line-height: 1.6;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
 }
 
-.sync-time:empty {
-  display: none;
+.brain .project-description {
+  width: 100%;
+  max-width: none;
+  margin: 0 0 1rem;
+
+  color: var(--ink-soft, #55524a);
+  font-size: 1.1rem;
+  line-height: 1.5;
+}
+
+/* =========================================
+   Technology stack
+   ========================================= */
+
+.brain .project-meta {
+  display: block;
+  flex-wrap: wrap;
+
+  margin-bottom: 1rem;
+
+  color: var(--ink-soft, #55524a);
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.brain .project-meta > span:first-child {
+  color: var(--brain-muted);
+  margin-right: 0.75rem;
+}
+
+/* =========================================
+   Engineering highlights
+   ========================================= */
+
+.brain .project-engineering {
+  margin-bottom: 1.25rem;
+}
+
+.brain .engineering-label {
+  display: block;
+  margin-bottom: 0.5rem;
+
+  color: var(--brain-muted);
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+.brain .project-engineering ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.brain .project-engineering li {
+  position: relative;
+  padding-left: 1.25rem;
+  margin-bottom: 0.25rem;
+
+  color: var(--ink-soft, #55524a);
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.brain .project-engineering li::before {
+  content: "└";
+  position: absolute;
+  left: 0;
+  color: var(--brain-muted);
+}
+
+/* =========================================
+   Project links
+   ========================================= */
+
+.brain .project-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+
+  margin-top: 1.25rem;
+}
+
+.brain .project-links a,
+.brain .brain-footer a {
+  color: var(--ink, #2a2a28);
+  font-size: 0.95rem;
+  font-weight: 600;
+  line-height: 1.6;
+  text-decoration: none;
+}
+
+.brain .project-links a:hover,
+.brain .brain-footer a:hover {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+/* =========================================
+   Footer
+   ========================================= */
+
+.brain .brain-footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 100%;
+  margin: 1.5rem 0 0;
+  padding: 1rem 0 0;
+
+  border-top: 1px solid var(--paper-edge, #d8d4c7);
+  text-align: center;
+}
+
+/* =========================================
+   BRAIN-specific page layout
+   ========================================= */
+
+main:has(> .brain) {
+  align-items: stretch;
+  text-align: left;
+  gap: 0;
+
+  padding-top: 2rem;
+  padding-bottom: 7rem;
+}
+
+main:has(> .brain) > .brain {
+  width: 100%;
+  max-width: 700px;
+  margin-inline: auto;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Common alignment */
+
+.brain > .log-header,
+.brain > .projects,
+.brain > .brain-footer {
+  width: 100%;
+  margin-inline: 0;
+  padding-left: 0;
+  box-sizing: border-box;
+}
+
+
+/* Restore the intended footer spacing */
+
+.brain > .brain-footer {
+  margin-top: 1.5rem;
+  padding-top: 1rem;
+}
+
+/* =========================================
+   Responsive typography
+   ========================================= */
+
+@media (max-width: 600px) {
+  .brain > .log-header {
+    font-size: 0.85rem;
+  }
+
+  .brain .project-title {
+    font-size: 1.25rem;
+  }
+
+  .brain .project-number {
+    font-size: 0.9rem;
+  }
+
+  .brain .project-description {
+    font-size: 1rem;
+    line-height: 1.75;
+  }
+
+  .brain .project-meta,
+  .brain .project-engineering li {
+    font-size: 1rem;
+  }
+
+  .brain .project-subtitle,
+  .brain .engineering-label {
+    font-size: 0.875rem;
+  }
+
+  .brain .project-links a,
+  .brain .brain-footer a {
+    font-size: 0.9rem;
+  }
 }
