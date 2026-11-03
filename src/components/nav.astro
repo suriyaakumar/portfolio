@@ -1,69 +1,36 @@
 ---
 import "../styles/nav.css";
 
-const path = Astro.url.pathname;
+const pathname = Astro.url.pathname.replace(/\/+$/, "") || "/";
 
-const sectionLinks = [
+const links = [
   { label: "FACE", href: "/" },
   { label: "BRAIN", href: "/brain" },
   { label: "HEART", href: "/heart" },
   { label: "MEMORY", href: "/memory" },
 ];
 
-function isActive(href: string) {
-  if (href === "/") return path === "/";
+const isActive = (href: string) => {
+  if (href === "/face") {
+    return pathname === "/" || pathname === "/face";
+  }
 
-  return path === href || path.startsWith(`${href}/`);
-}
+  return pathname === href || pathname.startsWith(`${href}/`);
+};
 ---
 
-<nav class="nav-island" aria-label="Site navigation">
-  <div class="links">
+<header class="site-header">
+  <nav class="site-nav" aria-label="Primary navigation">
     {
-      sectionLinks.map((link) => {
-        const active = isActive(link.href);
+      links.map(({ label, href }) => {
+        const active = isActive(href);
 
         return (
-          <a
-            href={link.href}
-            class:list={["link", { active }]}
-            aria-current={active ? "page" : undefined}
-          >
-            {active ? `[${link.label}]` : link.label}
+          <a href={href} aria-current={active ? "page" : undefined}>
+            {active ? `[${label}]` : label}
           </a>
         );
       })
     }
-  </div>
-</nav>
-
-<script>
-  const navs = document.querySelectorAll<HTMLElement>(".nav-island");
-
-  let scrollTimeout: ReturnType<typeof setTimeout>;
-
-  function toggleNav(hidden: boolean) {
-    navs.forEach((nav) => {
-      nav.classList.toggle("nav-hidden", hidden);
-    });
-  }
-
-  window.addEventListener(
-    "scroll",
-    () => {
-      clearTimeout(scrollTimeout);
-
-      if (window.scrollY < 80) {
-        toggleNav(false);
-        return;
-      }
-
-      toggleNav(true);
-
-      scrollTimeout = setTimeout(() => {
-        toggleNav(false);
-      }, 100);
-    },
-    { passive: true },
-  );
-</script>
+  </nav>
+</header>

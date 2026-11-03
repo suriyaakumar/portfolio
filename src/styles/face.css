@@ -112,10 +112,6 @@
     min-width: 0;
 }
 
-.face .identity .section-header {
-    margin-bottom: 1rem;
-    font-weight: 600;
-}
 
 .face .identity .section-header > span {
     font-size: 0.75rem;
@@ -139,21 +135,13 @@
     font-weight: 500;
 }
 
-.face .identity .value {
-    font-size: 1rem;
-    font-weight: 500;
-}
-
 /* =========================================
    EXPERIENCE
    ========================================= */
 
-.face .work {
-    margin-top: 3rem;
-}
 
 .face .work .section-header {
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
 }
 
 .face .rail {
@@ -165,7 +153,7 @@
 .face .entry {
     position: relative;
     padding-left: 1.75rem;
-    padding-bottom: 2rem;
+    padding-bottom: 1.5rem;
 }
 
 /* Vertical rail */
@@ -207,7 +195,7 @@
     justify-content: space-between;
     align-items: baseline;
     gap: 0.6rem;
-    margin-bottom: 0.4rem;
+    margin-bottom: 0.25rem;
 }
 
 .face .company {
@@ -232,7 +220,7 @@
 /* Experience fields */
 
 .face .work .field {
-    margin-bottom: 0.25rem;
+    margin-bottom: 0.2rem;
 }
 
 .face .work .key {
@@ -266,7 +254,7 @@
 .face .notes {
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
+    gap: 0.35rem;
 }
 
 .face .notes p {
@@ -333,7 +321,7 @@
     }
 
     .face .identity .key {
-        width: 6.5rem;
+        width: 4.75rem;
         font-size: 0.85rem;
     }
 
@@ -343,6 +331,7 @@
 
     .face .entry {
         padding-left: 1.25rem;
+        padding-bottom: 1.25rem;
     }
 
     .face .entry-header {
@@ -371,12 +360,14 @@
    CONTACT
    ========================================= */
 
+.face .work,
 .face .contact {
-    margin-top: 3rem;
+    margin-top: 1.5rem;
 }
 
+.face .identity .section-header,
 .face .contact .section-header {
-    margin-bottom: 1rem;
+    margin-bottom: 0.75rem;
 }
 
 .face .contact .key {
@@ -406,6 +397,24 @@
     text-underline-offset: 4px;
 }
 
+/* Contact field spacing */
+
+.face .contact .fields {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.face .contact .field {
+    margin-bottom: 0;
+}
+
+/* Separate availability from contact links */
+
+.face .contact .field:nth-child(2) {
+    margin-bottom: 0.9rem;
+}
+
 .face .contact-link:focus-visible {
     outline: 2px solid var(--accent-face, #7A5C42);
     outline-offset: 4px;
@@ -424,11 +433,10 @@
         font-size: 0.85rem;
     }
 
-    .face .identity .key {
-        width: 4.75rem;
-        font-size: 0.85rem;
+    .face .work,
+    .face .contact {
+        margin-top: 1.25rem;
     }
-
 
     .face .contact-link {
         font-size: 0.85rem;
