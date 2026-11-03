@@ -30,11 +30,6 @@
     scrollbar-color: var(--ink-faint) transparent;
 }
 
-.ask-history-empty {
-    display: flex;
-    flex-direction: column;
-}
-
 .ask-welcome {
     width: 100%;
     max-width: 32rem;

@@ -278,13 +278,6 @@ main:has(> .brain) > .brain {
 }
 
 
-/* Restore the intended footer spacing */
-
-.brain > .brain-footer {
-  margin-top: 1.5rem;
-  padding-top: 1rem;
-}
-
 /* =========================================
    Responsive typography
    ========================================= */
