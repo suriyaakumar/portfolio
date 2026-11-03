@@ -67,6 +67,12 @@ const contacts = [
 		href: "https://linkedin.com/in/suriyaakumar",
 		external: true,
 	},
+	{
+		key: "RSS",
+		value: "Subscribe to HEART",
+		href: "/rss.xml",
+		external: true,
+	},
 ];
 ---
 
@@ -198,6 +204,7 @@ const contacts = [
 									class="resume-link"
 									type="button"
 									aria-haspopup="dialog"
+									aria-controls="resume-dialog"
 								>
 									[PREVIEW ↗]
 								</button>
@@ -274,24 +281,47 @@ const contacts = [
 </BaseLayout>
 
 <script>
-	function setupResumePreview() {
+	function initializeResumePreview() {
+		const button =
+			document.querySelector<HTMLButtonElement>("#resume-preview");
+
 		const dialog =
 			document.querySelector<HTMLDialogElement>("#resume-dialog");
 
-		const preview =
-			document.querySelector<HTMLButtonElement>("#resume-preview");
+		if (!button || !dialog) return;
 
-		if (!dialog || !preview) return;
+		button.onclick = () => {
+			if (!dialog.open) {
+				dialog.showModal();
+			}
+		};
 
-		preview.onclick = () => dialog.showModal();
-
-		// Close when clicking outside the dialog.
 		dialog.onclick = (event) => {
-			if (event.target === dialog) {
+			if (event.target !== dialog) return;
+
+			const rect = dialog.getBoundingClientRect();
+
+			const outside =
+				event.clientX < rect.left ||
+				event.clientX > rect.right ||
+				event.clientY < rect.top ||
+				event.clientY > rect.bottom;
+
+			if (outside) {
 				dialog.close();
 			}
 		};
 	}
 
-	document.addEventListener("astro:page-load", setupResumePreview);
+	// Initialize on ordinary page loads.
+	if (document.readyState === "loading") {
+		document.addEventListener("DOMContentLoaded", initializeResumePreview, {
+			once: true,
+		});
+	} else {
+		initializeResumePreview();
+	}
+
+	// Reinitialize after Astro client-side navigation.
+	document.addEventListener("astro:page-load", initializeResumePreview);
 </script>

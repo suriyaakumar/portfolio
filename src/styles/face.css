@@ -124,10 +124,19 @@
     white-space: nowrap;
 }
 
+.face .identity .field {
+    gap: 0.5rem;
+}
+
 .face .identity .key {
-    width: 7rem;
+    width: 4.75rem;
     font-size: 1rem;
     font-weight: 600;
+}
+
+.face .identity .value {
+    font-size: 1rem;
+    font-weight: 500;
 }
 
 .face .identity .value {
@@ -414,6 +423,12 @@
         width: 6.5rem;
         font-size: 0.85rem;
     }
+
+    .face .identity .key {
+        width: 4.75rem;
+        font-size: 0.85rem;
+    }
+
 
     .face .contact-link {
         font-size: 0.85rem;
