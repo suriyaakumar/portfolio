@@ -25,10 +25,11 @@
     gap: 1rem;
 
     padding-bottom: 0.5rem;
-    border-bottom: 1px solid var(--paper-edge, #D8D4C7);
+    border-bottom: 1px solid var(--paper-edge);
 
-    color: var(--ink-faint, #8A877C);
-    font-size: 0.92rem;
+    color: var(--ink-soft);
+    font-size: 1rem;
+    font-weight: 500;
     letter-spacing: 0.05em;
     text-transform: uppercase;
 }
@@ -37,6 +38,13 @@
 .face .section-header h2 {
     margin: 0;
     font: inherit;
+}
+
+.face .section-header > span,
+.face .identity .section-header > span {
+    color: inherit;
+    font: inherit;
+    white-space: nowrap;
 }
 
 /* =========================================
@@ -87,9 +95,10 @@
 
 .face .portrait {
     flex-shrink: 0;
+    box-sizing: border-box;
 
-    width: 130px;
-    height: 150px;
+    width: 160px;
+    height: 190px;
 
     padding: 4px;
     border: 1px solid var(--paper-edge, #D8D4C7);
@@ -112,20 +121,12 @@
     min-width: 0;
 }
 
-
-.face .identity .section-header > span {
-    font-size: 0.75rem;
-    font-weight: 500;
-    letter-spacing: 0.03em;
-    white-space: nowrap;
-}
-
 .face .identity .field {
     gap: 0.5rem;
 }
 
 .face .identity .key {
-    width: 4.75rem;
+    width: 5.25rem;
     font-size: 1rem;
     font-weight: 600;
 }
@@ -296,8 +297,8 @@
     }
 
     .face .portrait {
-        width: 90px;
-        height: 106px;
+        width: 110px;
+        height: 140px;
     }
 
     .face .identity {
@@ -306,10 +307,6 @@
 
     .face .section-header {
         font-size: 0.8rem;
-    }
-
-    .face .identity .section-header > span {
-        font-size: 0.65rem;
     }
 
     .face .fields {
@@ -321,7 +318,7 @@
     }
 
     .face .identity .key {
-        width: 4.75rem;
+        width: 5.25rem;
         font-size: 0.85rem;
     }
 
