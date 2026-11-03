@@ -1,13 +1,297 @@
 ---
 import BaseLayout from "../layouts/baseLayout.astro";
-import Portrait from "../components/portrait.astro";
-import WhoAmI from "../components/whoami.astro";
-import Timeline from "../components/timeline.astro";
+import { Image } from "astro:assets";
+import portrait from "../image.png";
+import "../styles/face.css";
+
+interface Field {
+	key: string;
+	value: string;
+}
+
+interface Experience {
+	org: string;
+	role: string;
+	period: string;
+	stack: string[];
+	details: string[];
+}
+
+const identity: Field[] = [
+	{ key: "NAME", value: "Suriyaa Kumar" },
+	{ key: "A/S/L", value: "26 / M / Chennai" },
+	{ key: "ROLE", value: "Software Developer" },
+];
+
+const experiences: Experience[] = [
+	{
+		org: "Comcast",
+		role: "Software Development Engineer - II",
+		period: "09.2024 — Present",
+		stack: ["React", "TypeScript", "Node.js", "Azure", "AWS"],
+		details: [
+			"Built reusable TypeScript services and conversational infrastructure for customer-facing chat and voice experiences.",
+			"Developed API-driven self-service workflows across order tracking, billing, refunds, streaming, and telecommunications.",
+			"Implemented CI/CD and release-validation infrastructure for production delivery.",
+		],
+	},
+	{
+		org: "Cloudify",
+		role: "Software Developer",
+		period: "08.2021 — 03.2024",
+		stack: ["TypeScript", "Next.js", "React", "AWS", "tRPC"],
+		details: [
+			"Built full-stack B2B SaaS integrations serving 25+ European customers.",
+			"Developed reusable CRM, ERP, payments, and e-commerce connectors, reducing repeated implementation effort by approximately 70%.",
+			"Built event-driven AWS Lambda and SQS workflows for orders, subscriptions, and invoicing.",
+		],
+	},
+];
+
+const contacts = [
+	{
+		key: "EMAIL",
+		value: "believeinsurya@gmail.com",
+		href: "mailto:believeinsurya@gmail.com",
+		external: false,
+	},
+	{
+		key: "GITHUB",
+		value: "github.com/suriyaakumar",
+		href: "https://github.com/suriyaakumar",
+		external: true,
+	},
+	{
+		key: "LINKEDIN",
+		value: "linkedin.com/in/suriyaakumar",
+		href: "https://linkedin.com/in/suriyaakumar",
+		external: true,
+	},
+];
 ---
 
-<BaseLayout title="Suriyaa Kumar | Face" description="An introductory section for the software developer, Suriyaa Kumar">
-	<Portrait>
-	<WhoAmI />
-	</Portrait>
-	<Timeline />
+<BaseLayout
+	title="Suriyaa Kumar | Face"
+	description="Software developer specializing in TypeScript, Node.js, React, and backend integrations."
+>
+	<div class="face">
+		<!-- Identity -->
+		<section class="profile" aria-labelledby="identity-heading">
+			<div class="portrait">
+				<Image src={portrait} alt="Suriyaa Kumar" priority />
+			</div>
+
+			<div class="identity">
+				<header class="section-header">
+					<h1 id="identity-heading">LOG // WH01S</h1>
+					<span>PROFILE LOADED</span>
+				</header>
+
+				<div class="fields">
+					{
+						identity.map(({ key, value }) => (
+							<div class="field">
+								<span class="key">[{key}]</span>
+								<span class="value">{value}</span>
+							</div>
+						))
+					}
+				</div>
+			</div>
+		</section>
+
+		<!-- Experience -->
+		<section class="work" aria-labelledby="experience-heading">
+			<header class="section-header">
+				<h2 id="experience-heading">LOG // WRK_3XP</h2>
+				<span>
+					{experiences.length}
+					{experiences.length === 1 ? " ENTRY" : " ENTRIES"}
+				</span>
+			</header>
+
+			<ol class="rail">
+				{
+					experiences.map((entry) => (
+						<li class="entry">
+							<span class="node" aria-hidden="true" />
+
+							<div class="entry-header">
+								<div class="company">
+									<span class="prompt" aria-hidden="true">
+										&gt;
+									</span>
+									<span>{entry.org.toUpperCase()}</span>
+								</div>
+
+								<span class="period">{entry.period}</span>
+							</div>
+
+							<div class="fields">
+								<div class="field">
+									<span class="key">[ROLE]</span>
+									<span class="value">{entry.role}</span>
+								</div>
+
+								<div class="field">
+									<span class="key">[STACK]</span>
+									<div class="value stack">
+										{entry.stack.map((tech) => (
+											<span>{tech}</span>
+										))}
+									</div>
+								</div>
+
+								<div class="field">
+									<span class="key">[NOTE]</span>
+									<div class="value notes">
+										{entry.details.map((detail) => (
+											<p>{detail}</p>
+										))}
+									</div>
+								</div>
+							</div>
+						</li>
+					))
+				}
+
+				<!-- Contact -->
+				<section
+					class="contact"
+					id="contact"
+					aria-labelledby="contact-heading"
+				>
+					<header class="section-header">
+						<h2 id="contact-heading">LOG // C0NTACT</h2>
+						<span>OPEN CHANNELS</span>
+					</header>
+
+					<div class="fields">
+						{
+							contacts.map(({ key, value, href, external }) => (
+								<div class="field">
+									<span class="key">[{key}]</span>
+
+									<a
+										class="value contact-link"
+										href={href}
+										target={external ? "_blank" : undefined}
+										rel={
+											external
+												? "noopener noreferrer"
+												: undefined
+										}
+									>
+										{value}
+										<span aria-hidden="true">↗</span>
+									</a>
+								</div>
+							))
+						}
+
+						<div class="field">
+							<span class="key">[RESUME]</span>
+
+							<div class="resume-actions">
+								<button
+									id="resume-preview"
+									class="resume-link"
+									type="button"
+									aria-haspopup="dialog"
+								>
+									[PREVIEW ↗]
+								</button>
+
+								<a
+									href="/resume.pdf"
+									download="Suriyaa_Kumar_Resume.pdf"
+									class="resume-link"
+								>
+									[DOWNLOAD ↓]
+								</a>
+							</div>
+						</div>
+					</div>
+				</section>
+
+				<!-- Résumé preview -->
+				<dialog
+					id="resume-dialog"
+					class="resume-dialog"
+					aria-labelledby="resume-title"
+				>
+					<header class="resume-header">
+						<h2 id="resume-title">LOG // R3SUM3</h2>
+
+						<div class="resume-controls">
+							<a
+								href="/resume.pdf"
+								download="Suriyaa_Kumar_Resume.pdf"
+							>
+								[DOWNLOAD ↓]
+							</a>
+
+							<form method="dialog">
+								<button type="submit" autofocus>
+									[CLOSE ×]
+								</button>
+							</form>
+						</div>
+					</header>
+
+					<iframe
+						src="/resume.pdf"
+						title="Suriyaa Kumar — Résumé"
+						class="resume-viewer"
+						loading="lazy"></iframe>
+
+					<footer class="resume-footer">
+						<span>DOCUMENT // PDF</span>
+						<a
+							href="/resume.pdf"
+							target="_blank"
+							rel="noopener noreferrer"
+						>
+							[OPEN EXTERNALLY ↗]
+						</a>
+					</footer>
+				</dialog>
+
+				<!-- Terminal cursor -->
+				<li class="entry end">
+					<span class="node" aria-hidden="true"></span>
+
+					<div class="entry-header">
+						<div class="company">
+							<span class="prompt" aria-hidden="true">&gt;</span>
+							<span class="cursor">_</span>
+						</div>
+					</div>
+				</li>
+			</ol>
+		</section>
+	</div>
 </BaseLayout>
+
+<script>
+	function setupResumePreview() {
+		const dialog =
+			document.querySelector<HTMLDialogElement>("#resume-dialog");
+
+		const preview =
+			document.querySelector<HTMLButtonElement>("#resume-preview");
+
+		if (!dialog || !preview) return;
+
+		preview.onclick = () => dialog.showModal();
+
+		// Close when clicking outside the dialog.
+		dialog.onclick = (event) => {
+			if (event.target === dialog) {
+				dialog.close();
+			}
+		};
+	}
+
+	document.addEventListener("astro:page-load", setupResumePreview);
+</script>

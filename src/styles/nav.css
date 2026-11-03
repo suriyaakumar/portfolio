@@ -19,6 +19,18 @@
   letter-spacing: 0.04em;
 
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+
+  /* Smoothly hide and reveal the navigation */
+  transition:
+    transform 150ms ease,
+    opacity 150ms ease;
+}
+
+/* Hide navigation when scrolling down */
+.nav-island.nav-hidden {
+  transform: translate(-50%, calc(100% + 3rem));
+  opacity: 0;
+  pointer-events: none;
 }
 
 .links {
@@ -58,7 +70,7 @@
   color: var(--accent, #2A2A28);
 }
 
-/* show desktop nav by default, hide mobile nav */
+/* Show desktop navigation by default */
 .mobile-nav {
   display: none;
 }
@@ -122,6 +134,7 @@
   opacity: 1;
 }
 
+/* Mobile navigation */
 @media (max-width: 480px) {
   .desktop-nav {
     display: none;
@@ -142,5 +155,12 @@
 
   .mobile-nav .mark {
     padding-right: 0.85rem;
+  }
+}
+
+/* Accessibility: disable animations when reduced motion is preferred */
+@media (prefers-reduced-motion: reduce) {
+  .nav-island {
+    transition: none;
   }
 }

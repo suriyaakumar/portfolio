@@ -1,0 +1,602 @@
+/* =========================================
+   FACE — BASE
+   ========================================= */
+
+.face {
+    width: 100%;
+    max-width: 700px;
+    margin-inline: auto;
+
+    font-family: var(--font-mono, monospace);
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--ink);
+    text-align: left;
+}
+
+/* =========================================
+   SHARED — HEADERS
+   ========================================= */
+
+.face .section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 1rem;
+
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--paper-edge, #D8D4C7);
+
+    color: var(--ink-faint, #8A877C);
+    font-size: 0.92rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+}
+
+.face .section-header h1,
+.face .section-header h2 {
+    margin: 0;
+    font: inherit;
+}
+
+/* =========================================
+   SHARED — FIELDS
+   ========================================= */
+
+.face .fields {
+    padding-left: 1.4rem;
+    border-left: 1px solid var(--paper-edge, #D8D4C7);
+}
+
+.face .field {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    margin-bottom: 0.35rem;
+}
+
+.face .field:last-child {
+    margin-bottom: 0;
+}
+
+.face .key {
+    flex-shrink: 0;
+    color: var(--ink);
+    letter-spacing: 0.03em;
+}
+
+.face .value {
+    flex: 1;
+    min-width: 0;
+
+    color: var(--ink-soft, #55524A);
+    line-height: 1.55;
+    text-align: left;
+    overflow-wrap: break-word;
+}
+
+/* =========================================
+   IDENTITY
+   ========================================= */
+
+.face .profile {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.75rem;
+}
+
+.face .portrait {
+    flex-shrink: 0;
+
+    width: 130px;
+    height: 150px;
+
+    padding: 4px;
+    border: 1px solid var(--paper-edge, #D8D4C7);
+    background: var(--paper, #EDEAE1);
+    overflow: hidden;
+}
+
+.face .portrait img {
+    display: block;
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+    transform: scale(2);
+    transform-origin: bottom;
+}
+
+.face .identity {
+    flex: 1;
+    min-width: 0;
+}
+
+.face .identity .section-header {
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+.face .identity .section-header > span {
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.03em;
+    white-space: nowrap;
+}
+
+.face .identity .key {
+    width: 7rem;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.face .identity .value {
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+/* =========================================
+   EXPERIENCE
+   ========================================= */
+
+.face .work {
+    margin-top: 3rem;
+}
+
+.face .work .section-header {
+    margin-bottom: 1.5rem;
+}
+
+.face .rail {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.face .entry {
+    position: relative;
+    padding-left: 1.75rem;
+    padding-bottom: 2rem;
+}
+
+/* Vertical rail */
+
+.face .entry::before {
+    content: "";
+    position: absolute;
+
+    left: 4px;
+    top: 0.35rem;
+    bottom: 0;
+
+    width: 1px;
+    background: var(--paper-edge, #D8D4C7);
+}
+
+.face .entry:last-child::before {
+    display: none;
+}
+
+/* Timeline nodes */
+
+.face .node {
+    position: absolute;
+    left: 0;
+    top: 0.3rem;
+
+    width: 8px;
+    height: 8px;
+
+    background: var(--accent, #2A2A28);
+    transform: rotate(45deg);
+}
+
+/* Company + period */
+
+.face .entry-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 0.6rem;
+    margin-bottom: 0.4rem;
+}
+
+.face .company {
+    display: flex;
+    align-items: baseline;
+    gap: 0.6rem;
+}
+
+.face .prompt {
+    color: var(--accent, #2A2A28);
+    font-weight: 700;
+}
+
+.face .period {
+    color: var(--ink);
+    font-size: 0.95rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    white-space: nowrap;
+}
+
+/* Experience fields */
+
+.face .work .field {
+    margin-bottom: 0.25rem;
+}
+
+.face .work .key {
+    width: 3.5rem;
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: var(--ink);
+}
+
+.face .work .value {
+    line-height: 1.5;
+}
+
+/* Technology stack */
+
+.face .stack {
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 0.5rem;
+    row-gap: 0.25rem;
+}
+
+.face .stack span:not(:last-child)::after {
+    content: "·";
+    color: var(--ink-faint);
+    margin-left: 0.5rem;
+}
+
+/* Accomplishments */
+
+.face .notes {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.face .notes p {
+    margin: 0;
+    text-align: left;
+}
+
+/* Terminal cursor */
+
+.face .entry.end {
+    padding-bottom: 0;
+}
+
+.face .end .node {
+    background: transparent;
+    border: 1px solid var(--accent, #2A2A28);
+}
+
+.face .cursor {
+    color: var(--accent, #2A2A28);
+    animation: face-blink 1.1s step-end infinite;
+}
+
+@keyframes face-blink {
+    50% {
+        opacity: 0;
+    }
+}
+
+/* =========================================
+   RESPONSIVE
+   ========================================= */
+
+@media (max-width: 480px) {
+    .face .profile {
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    .face .portrait {
+        width: 90px;
+        height: 106px;
+    }
+
+    .face .identity {
+        width: 100%;
+    }
+
+    .face .section-header {
+        font-size: 0.8rem;
+    }
+
+    .face .identity .section-header > span {
+        font-size: 0.65rem;
+    }
+
+    .face .fields {
+        padding-left: 0.85rem;
+    }
+
+    .face .field {
+        gap: 0.5rem;
+    }
+
+    .face .identity .key {
+        width: 6.5rem;
+        font-size: 0.85rem;
+    }
+
+    .face .identity .value {
+        font-size: 0.85rem;
+    }
+
+    .face .entry {
+        padding-left: 1.25rem;
+    }
+
+    .face .entry-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.25rem;
+    }
+
+    .face .period {
+        margin-left: 1.2rem;
+        font-size: 0.85rem;
+    }
+
+    .face .work .value {
+        font-size: 0.9rem;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .face .cursor {
+        animation: none;
+    }
+}
+
+/* =========================================
+   CONTACT
+   ========================================= */
+
+.face .contact {
+    margin-top: 3rem;
+}
+
+.face .contact .section-header {
+    margin-bottom: 1rem;
+}
+
+.face .contact .key {
+    width: 7rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.face .contact-link {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 0.5rem;
+    width: fit-content;
+
+    color: var(--accent-face, #7A5C42);
+    font-size: 0.95rem;
+    font-weight: 500;
+    text-decoration: none;
+    overflow-wrap: anywhere;
+
+    transition: color 150ms ease;
+}
+
+.face .contact-link:hover {
+    color: var(--ink);
+    text-decoration: underline;
+    text-underline-offset: 4px;
+}
+
+.face .contact-link:focus-visible {
+    outline: 2px solid var(--accent-face, #7A5C42);
+    outline-offset: 4px;
+}
+
+.face .contact-link span {
+    flex-shrink: 0;
+    font-size: 0.85rem;
+}
+
+/* Mobile */
+
+@media (max-width: 480px) {
+    .face .contact .key {
+        width: 6.5rem;
+        font-size: 0.85rem;
+    }
+
+    .face .contact-link {
+        font-size: 0.85rem;
+    }
+}
+
+/* =========================================
+   RESUME — ACTIONS
+   ========================================= */
+
+.face .resume-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+}
+
+.face .resume-link {
+    padding: 0;
+    border: none;
+    background: none;
+
+    color: var(--accent-face, #7A5C42);
+    font: inherit;
+    font-size: 0.95rem;
+    font-weight: 500;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.face .resume-link:hover {
+    color: var(--ink);
+    text-decoration: underline;
+    text-underline-offset: 4px;
+}
+
+/* =========================================
+   RESUME — MODAL
+   ========================================= */
+
+.face .resume-dialog {
+    box-sizing: border-box;
+
+    width: min(900px, calc(100vw - 2rem));
+    height: min(850px, calc(100dvh - 2rem));
+    max-width: none;
+    max-height: none;
+
+    margin: auto;
+    padding: 0;
+
+    background: var(--paper, #EDEAE1);
+    border: 1px solid var(--paper-edge, #D8D4C7);
+    color: var(--ink);
+
+    font-family: var(--font-mono, monospace);
+}
+
+.face .resume-dialog[open] {
+    display: flex;
+    flex-direction: column;
+}
+
+.face .resume-dialog::backdrop {
+    background: rgba(25, 24, 22, 0.7);
+}
+
+/* Header */
+
+.face .resume-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+
+    padding: 0.9rem 1.25rem;
+    border-bottom: 1px solid var(--paper-edge);
+}
+
+.face .resume-header h2 {
+    margin: 0;
+
+    color: var(--ink-faint);
+    font-size: 0.92rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+}
+
+.face .resume-controls {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.face .resume-controls a,
+.face .resume-controls button,
+.face .resume-footer a {
+    padding: 0;
+    border: none;
+    background: none;
+
+    color: var(--accent-face);
+    font: inherit;
+    font-size: 0.8rem;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.face .resume-controls a:hover,
+.face .resume-controls button:hover,
+.face .resume-footer a:hover {
+    text-decoration: underline;
+    text-underline-offset: 4px;
+}
+
+/* PDF viewer */
+
+.face .resume-viewer {
+    display: block;
+    flex: 1;
+    width: 100%;
+    min-height: 0;
+    border: none;
+    background: white;
+}
+
+/* Footer */
+
+.face .resume-footer {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+
+    padding: 0.65rem 1.25rem;
+    border-top: 1px solid var(--paper-edge);
+
+    color: var(--ink-faint);
+    font-size: 0.75rem;
+}
+
+/* Keyboard accessibility */
+
+.face .resume-link:focus-visible,
+.face .resume-dialog a:focus-visible,
+.face .resume-dialog button:focus-visible {
+    outline: 2px solid var(--accent-face);
+    outline-offset: 4px;
+}
+
+/* Mobile */
+
+@media (max-width: 600px) {
+    .face .resume-dialog {
+        width: calc(100vw - 1rem);
+        height: calc(100dvh - 1rem);
+    }
+
+    .face .resume-header {
+        padding: 0.75rem;
+    }
+
+    .face .resume-header h2 {
+        font-size: 0.75rem;
+    }
+
+    .face .resume-controls {
+        gap: 0.75rem;
+    }
+
+    .face .resume-controls a,
+    .face .resume-controls button {
+        font-size: 0.7rem;
+    }
+
+    .face .resume-footer {
+        padding: 0.65rem 0.75rem;
+        font-size: 0.65rem;
+    }
+
+    .face .resume-actions {
+        gap: 1rem;
+    }
+
+    .face .resume-link {
+        font-size: 0.8rem;
+    }
+}
