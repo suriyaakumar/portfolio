@@ -17,18 +17,18 @@ interface Experience {
 	details: string[];
 }
 
+interface Contact {
+	key: string;
+	value: string;
+	href: string;
+}
+
 const identity: Field[] = [
 	{ key: "NAME", value: "Suriyaa Kumar" },
 	{ key: "A/S/L", value: "26 / M / Chennai" },
 	{ key: "ROLE", value: "Software Engineer" },
-	{
-		key: "FOCUS",
-		value: "Backend systems · APIs · Full-stack",
-	},
-	{
-		key: "BEYOND",
-		value: "Music, games, anime, writing & the internet",
-	},
+	{ key: "FOCUS", value: "Backend systems · APIs · Full-stack" },
+	{ key: "BEYOND", value: "Music, games, anime, writing & the internet" },
 ];
 
 const experiences: Experience[] = [
@@ -56,40 +56,36 @@ const experiences: Experience[] = [
 	},
 ];
 
-const contacts = [
+const contacts: Contact[] = [
 	{
 		key: "EMAIL",
 		value: "believeinsurya@gmail.com",
 		href: "mailto:believeinsurya@gmail.com",
-		external: false,
 	},
 	{
 		key: "GITHUB",
 		value: "github.com/suriyaakumar",
 		href: "https://github.com/suriyaakumar",
-		external: true,
 	},
 	{
 		key: "LINKEDIN",
 		value: "linkedin.com/in/suriyaakumar",
 		href: "https://linkedin.com/in/suriyaakumar",
-		external: true,
 	},
 	{
 		key: "RSS",
 		value: "Subscribe to HEART",
 		href: "/rss.xml",
-		external: true,
 	},
 ];
 ---
 
 <BaseLayout
 	title="Suriyaa Kumar | Face"
-	description="Software developer specializing in TypeScript, Node.js, React, and backend integrations."
+	description="Software engineer specializing in TypeScript, backend systems, integrations, and full-stack development."
 >
 	<div class="face">
-		<!-- Identity -->
+		<!-- WHOIS -->
 		<section class="profile" aria-labelledby="identity-heading">
 			<div class="portrait">
 				<Image src={portrait} alt="Suriyaa Kumar" priority />
@@ -114,196 +110,172 @@ const contacts = [
 			</div>
 		</section>
 
-		<!-- Experience -->
+		<!-- WORK EXPERIENCE -->
 		<section class="work" aria-labelledby="experience-heading">
 			<header class="section-header">
 				<h2 id="experience-heading">LOG // WRK_3XP</h2>
-				<span>
-					{experiences.length}
-					{experiences.length === 1 ? " ENTRY" : " ENTRIES"}
-				</span>
+				<span
+					>{String(experiences.length).padStart(2, "0")} ENTRIES</span
+				>
 			</header>
 
-			<ol class="rail">
+			<ol class="work-list">
 				{
-					experiences.map((entry) => (
-						<li class="entry">
-							<span class="node" aria-hidden="true" />
-
-							<div class="entry-header">
-								<div class="company">
-									<span class="prompt" aria-hidden="true">
+					experiences.map((entry, index) => (
+						<li class="work-entry">
+							<div class="work-heading">
+								<h3>
+									<span
+										class="work-prompt"
+										aria-hidden="true"
+									>
 										&gt;
 									</span>
-									<span>{entry.org.toUpperCase()}</span>
-								</div>
+									<span class="work-number">
+										{String(index + 1).padStart(2, "0")} /
+									</span>
+									<span class="work-title">{entry.org}</span>
+								</h3>
 
-								<span class="period">{entry.period}</span>
+								<span class="work-period">{entry.period}</span>
 							</div>
 
-							<div class="fields">
-								<div class="field">
-									<span class="key">[ROLE]</span>
-									<span class="value">{entry.role}</span>
+							<div class="work-body">
+								<p class="work-subtitle">{entry.role}</p>
+								<p class="work-description">
+									{entry.details[0]}
+								</p>
+
+								<div class="work-meta">
+									<span>[STACK]</span>
+									<span>{entry.stack.join(" · ")}</span>
 								</div>
 
-								<div class="field">
-									<span class="key">[STACK]</span>
-									<div class="value stack">
-										{entry.stack.map((tech) => (
-											<span>{tech}</span>
-										))}
-									</div>
-								</div>
-
-								<div class="field">
-									<span class="key">[NOTE]</span>
-									<div class="value notes">
-										{entry.details.map((detail) => (
-											<p>{detail}</p>
-										))}
-									</div>
+								<div class="work-engineering">
+									<span class="engineering-label">
+										[ENGINEERING]
+									</span>
+									<ul>
+										{entry.details
+											.slice(1)
+											.map((detail) => (
+												<li>{detail}</li>
+											))}
+									</ul>
 								</div>
 							</div>
 						</li>
 					))
 				}
+			</ol>
+		</section>
 
-				<!-- Contact -->
-				<section
-					class="contact"
-					id="contact"
-					aria-labelledby="contact-heading"
-				>
-					<header class="section-header">
-						<h2 id="contact-heading">LOG // R34CH</h2>
-						<span>OPEN CHANNELS</span>
-					</header>
+		<!-- REACH -->
+		<section class="contact" id="contact" aria-labelledby="contact-heading">
+			<header class="section-header">
+				<h2 id="contact-heading">LOG // R34CH</h2>
+				<span>OPEN CHANNELS</span>
+			</header>
 
-					<div class="fields">
-						<div class="field">
-							<span class="key">[STATUS]</span>
-							<span class="value"
-								>Open to software engineering opportunities</span
-							>
-						</div>
+			<div class="fields">
+				<div class="contact-group">
+					<div class="field">
+						<span class="key">[STATUS]</span>
+						<span class="value"
+							>Open to software engineering opportunities</span
+						>
+					</div>
+					<div class="field">
+						<span class="key">[TIME]</span>
+						<span class="value"
+							>IST (UTC+05:30) · Usually replies within 24h</span
+						>
+					</div>
+				</div>
 
-						<div class="field">
-							<span class="key">[WORK MODE]</span>
-							<span class="value">Remote | Hybrid</span>
-						</div>
-
-						<div class="field">
-							<span class="key">[TIME]</span>
-							<span class="value"
-								>IST (UTC+05:30) · Usually replies within 24h</span
-							>
-						</div>
-
-						{
-							contacts.map(({ key, value, href, external }) => (
-								<div class="field">
-									<span class="key">[{key}]</span>
-
-									<a
-										class="value contact-link"
-										href={href}
-										target={external ? "_blank" : undefined}
-										rel={
-											external
-												? "noopener noreferrer"
-												: undefined
-										}
-									>
-										{value}
-										<span aria-hidden="true">↗</span>
-									</a>
-								</div>
-							))
-						}
-
-						<div class="field">
-							<span class="key">[RESUME]</span>
-
-							<div class="resume-actions">
-								<button
-									id="resume-preview"
-									class="resume-link"
-									type="button"
-									aria-haspopup="dialog"
-									aria-controls="resume-dialog"
-								>
-									[PREVIEW ↗]
-								</button>
-
+				<div class="contact-group">
+					{
+						contacts.map(({ key, value, href }) => (
+							<div class="field">
+								<span class="key">[{key}]</span>
 								<a
-									href="/resume.pdf"
-									download="Suriyaa_Kumar_Resume.pdf"
-									class="resume-link"
+									class="value contact-link"
+									href={href}
+									target={
+										href.startsWith("https://")
+											? "_blank"
+											: undefined
+									}
+									rel={
+										href.startsWith("https://")
+											? "noopener noreferrer"
+											: undefined
+									}
 								>
-									[DOWNLOAD ↓]
+									{value}
+									<span aria-hidden="true">↗</span>
 								</a>
 							</div>
-						</div>
-					</div>
-				</section>
+						))
+					}
 
-				<!-- Résumé preview -->
-				<dialog
-					id="resume-dialog"
-					class="resume-dialog"
-					aria-labelledby="resume-title"
-				>
-					<header class="resume-header">
-						<h2 id="resume-title">LOG // R3SUM3</h2>
+					<div class="field">
+						<span class="key">[RESUME]</span>
+						<div class="resume-actions">
+							<button
+								id="resume-preview"
+								class="resume-link"
+								type="button"
+								aria-haspopup="dialog"
+								aria-controls="resume-dialog"
+							>
+								[PREVIEW ↗]
+							</button>
 
-						<div class="resume-controls">
 							<a
 								href="/resume.pdf"
 								download="Suriyaa_Kumar_Resume.pdf"
+								class="resume-link"
 							>
 								[DOWNLOAD ↓]
 							</a>
-
-							<form method="dialog">
-								<button type="submit" autofocus>
-									[CLOSE ×]
-								</button>
-							</form>
-						</div>
-					</header>
-
-					<iframe
-						src="/resume.pdf"
-						title="Suriyaa Kumar — Résumé"
-						class="resume-viewer"
-						loading="lazy"></iframe>
-
-					<footer class="resume-footer">
-						<span>DOCUMENT // PDF</span>
-						<a
-							href="/resume.pdf"
-							target="_blank"
-							rel="noopener noreferrer"
-						>
-							[OPEN EXTERNALLY ↗]
-						</a>
-					</footer>
-				</dialog>
-
-				<!-- Terminal cursor -->
-				<li class="entry end">
-					<span class="node" aria-hidden="true"></span>
-
-					<div class="entry-header">
-						<div class="company">
-							<span class="prompt" aria-hidden="true">&gt;</span>
-							<span class="cursor">_</span>
 						</div>
 					</div>
-				</li>
-			</ol>
+				</div>
+			</div>
 		</section>
+
+		<!-- RESUME PREVIEW -->
+		<dialog
+			id="resume-dialog"
+			class="resume-dialog"
+			aria-labelledby="resume-title"
+		>
+			<header class="resume-header">
+				<h2 id="resume-title">LOG // R3SUM3</h2>
+				<div class="resume-controls">
+					<a href="/resume.pdf" download="Suriyaa_Kumar_Resume.pdf">
+						[DOWNLOAD ↓]
+					</a>
+					<form method="dialog">
+						<button type="submit" autofocus>[CLOSE ×]</button>
+					</form>
+				</div>
+			</header>
+
+			<iframe
+				src="/resume.pdf"
+				title="Suriyaa Kumar — Résumé"
+				class="resume-viewer"
+				loading="lazy"></iframe>
+
+			<footer class="resume-footer">
+				<span>DOCUMENT // PDF</span>
+				<a href="/resume.pdf" target="_blank" rel="noopener noreferrer">
+					[OPEN EXTERNALLY ↗]
+				</a>
+			</footer>
+		</dialog>
 	</div>
 </BaseLayout>
 
@@ -311,36 +283,29 @@ const contacts = [
 	function initializeResumePreview() {
 		const button =
 			document.querySelector<HTMLButtonElement>("#resume-preview");
-
 		const dialog =
 			document.querySelector<HTMLDialogElement>("#resume-dialog");
 
 		if (!button || !dialog) return;
 
 		button.onclick = () => {
-			if (!dialog.open) {
-				dialog.showModal();
-			}
+			if (!dialog.open) dialog.showModal();
 		};
 
 		dialog.onclick = (event) => {
 			if (event.target !== dialog) return;
 
 			const rect = dialog.getBoundingClientRect();
-
 			const outside =
 				event.clientX < rect.left ||
 				event.clientX > rect.right ||
 				event.clientY < rect.top ||
 				event.clientY > rect.bottom;
 
-			if (outside) {
-				dialog.close();
-			}
+			if (outside) dialog.close();
 		};
 	}
 
-	// Initialize on ordinary page loads.
 	if (document.readyState === "loading") {
 		document.addEventListener("DOMContentLoaded", initializeResumePreview, {
 			once: true,
@@ -349,6 +314,5 @@ const contacts = [
 		initializeResumePreview();
 	}
 
-	// Reinitialize after Astro client-side navigation.
 	document.addEventListener("astro:page-load", initializeResumePreview);
 </script>

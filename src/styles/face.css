@@ -1,21 +1,25 @@
 /* =========================================
-   FACE — BASE
+   FACE — MAIN CONTAINER
    ========================================= */
 
 .face {
     width: 100%;
     max-width: 700px;
+    min-width: 0;
     margin-inline: auto;
+    box-sizing: border-box;
 
     font-family: var(--font-mono, monospace);
     font-size: 1rem;
     line-height: 1.6;
     color: var(--ink);
     text-align: left;
+
+    --face-muted: #686459;
 }
 
 /* =========================================
-   SHARED — HEADERS
+   SHARED — SECTION HEADERS
    ========================================= */
 
 .face .section-header {
@@ -24,13 +28,15 @@
     align-items: baseline;
     gap: 1rem;
 
+    width: 100%;
     padding-bottom: 0.5rem;
-    border-bottom: 1px solid var(--paper-edge);
+    border-bottom: 1px solid var(--paper-edge, #D8D4C7);
 
-    color: var(--ink-soft);
+    color: var(--ink, #2B2A26);
     font-size: 1rem;
-    font-weight: 500;
-    letter-spacing: 0.05em;
+    font-weight: 700;
+    line-height: 1.6;
+    letter-spacing: 0.04em;
     text-transform: uppercase;
 }
 
@@ -40,8 +46,7 @@
     font: inherit;
 }
 
-.face .section-header > span,
-.face .identity .section-header > span {
+.face .section-header > span {
     color: inherit;
     font: inherit;
     white-space: nowrap;
@@ -69,14 +74,14 @@
 
 .face .key {
     flex-shrink: 0;
-    color: var(--ink);
+    color: var(--ink-soft, #55524A);
+    font-weight: 600;
     letter-spacing: 0.03em;
 }
 
 .face .value {
     flex: 1;
     min-width: 0;
-
     color: var(--ink-soft, #55524A);
     line-height: 1.55;
     text-align: left;
@@ -84,7 +89,7 @@
 }
 
 /* =========================================
-   IDENTITY
+   WHOIS — PROFILE
    ========================================= */
 
 .face .profile {
@@ -96,10 +101,8 @@
 .face .portrait {
     flex-shrink: 0;
     box-sizing: border-box;
-
-    width: 160px;
-    height: 190px;
-
+    width: 130px;
+    height: 210px;
     padding: 4px;
     border: 1px solid var(--paper-edge, #D8D4C7);
     background: var(--paper, #EDEAE1);
@@ -110,10 +113,10 @@
     display: block;
     width: 100%;
     height: 100%;
-
     object-fit: cover;
-    transform: scale(2);
-    transform-origin: bottom;
+    /* Move the roof out of frame and center the subject. */
+    transform: scale(1.8);
+    transform-origin: center bottom;
 }
 
 .face .identity {
@@ -121,14 +124,13 @@
     min-width: 0;
 }
 
-.face .identity .field {
-    gap: 0.5rem;
+.face .identity .section-header {
+    margin-bottom: 0.75rem;
 }
 
 .face .identity .key {
     width: 5.25rem;
     font-size: 1rem;
-    font-weight: 600;
 }
 
 .face .identity .value {
@@ -137,255 +139,223 @@
 }
 
 /* =========================================
-   EXPERIENCE
+   WORK — BRAIN-STYLE ENTRIES
    ========================================= */
 
+.face .work {
+    margin-top: 1.25rem;
+}
 
 .face .work .section-header {
     margin-bottom: 1rem;
 }
 
-.face .rail {
+.face .work-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    width: 100%;
+    min-width: 0;
     list-style: none;
     margin: 0;
     padding: 0;
 }
 
-.face .entry {
-    position: relative;
-    padding-left: 1.75rem;
-    padding-bottom: 1.5rem;
+.face .work-entry {
+    width: 100%;
+    min-width: 0;
+    margin: 0;
+    box-sizing: border-box;
 }
 
-/* Vertical rail */
-
-.face .entry::before {
-    content: "";
-    position: absolute;
-
-    left: 4px;
-    top: 0.35rem;
-    bottom: 0;
-
-    width: 1px;
-    background: var(--paper-edge, #D8D4C7);
-}
-
-.face .entry:last-child::before {
-    display: none;
-}
-
-/* Timeline nodes */
-
-.face .node {
-    position: absolute;
-    left: 0;
-    top: 0.3rem;
-
-    width: 8px;
-    height: 8px;
-
-    background: var(--accent, #2A2A28);
-    transform: rotate(45deg);
-}
-
-/* Company + period */
-
-.face .entry-header {
+.face .work-heading {
     display: flex;
     justify-content: space-between;
     align-items: baseline;
-    gap: 0.6rem;
-    margin-bottom: 0.25rem;
+    gap: 1rem;
+    margin: 0 0 0.35rem;
+    padding: 0;
+    text-align: left;
 }
 
-.face .company {
+.face .work-heading h3 {
     display: flex;
     align-items: baseline;
     gap: 0.6rem;
+    min-width: 0;
+    margin: 0;
+    padding: 0;
+    font-family: var(--font-mono, monospace);
+    font-weight: 400;
+    line-height: 1.5;
 }
 
-.face .prompt {
-    color: var(--accent, #2A2A28);
-    font-weight: 700;
-}
-
-.face .period {
-    color: var(--ink);
-    font-size: 0.95rem;
+.face .work-prompt {
+    color: var(--ink-soft, #55524A);
+    font-size: 1rem;
     font-weight: 600;
+}
+
+.face .work-number {
+    color: var(--face-muted);
+    font-size: 1rem;
+    font-weight: 400;
+    white-space: nowrap;
+}
+
+.face .work-title {
+    color: var(--ink-soft, #55524A);
+    font-family: var(--font-mono, monospace);
+    font-size: 1.4rem;
+    font-weight: 600;
+    line-height: 1.5;
+    letter-spacing: -0.02em;
+    text-transform: none;
+}
+
+.face .work-period {
+    color: var(--ink-soft, #55524A);
+    font-size: 0.95rem;
+    font-weight: 500;
     letter-spacing: 0.02em;
     white-space: nowrap;
 }
 
-/* Experience fields */
-
-.face .work .field {
-    margin-bottom: 0.2rem;
+.face .work-body {
+    width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+    margin-left: 0;
+    padding-left: 1.4rem;
+    border-left: 1px solid var(--paper-edge, #D8D4C7);
 }
 
-.face .work .key {
-    width: 3.5rem;
-    font-size: 0.72rem;
-    font-weight: 600;
-    color: var(--ink);
+.face .work-subtitle {
+    margin: 0 0 0.4rem;
+    color: var(--face-muted);
+    font-size: 0.9rem;
+    font-weight: 400;
+    line-height: 1.6;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
 }
 
-.face .work .value {
+.face .work-description {
+    width: 100%;
+    margin: 0 0 0.65rem;
+    color: var(--ink-soft, #55524A);
+    font-size: 1.1rem;
+    font-weight: 400;
     line-height: 1.5;
-}
-
-/* Technology stack */
-
-.face .stack {
-    display: flex;
-    flex-wrap: wrap;
-    column-gap: 0.5rem;
-    row-gap: 0.25rem;
-}
-
-.face .stack span:not(:last-child)::after {
-    content: "·";
-    color: var(--ink-faint);
-    margin-left: 0.5rem;
-}
-
-/* Accomplishments */
-
-.face .notes {
-    display: flex;
-    flex-direction: column;
-    gap: 0.35rem;
-}
-
-.face .notes p {
-    margin: 0;
     text-align: left;
 }
 
-/* Terminal cursor */
-
-.face .entry.end {
-    padding-bottom: 0;
+.face .work-meta {
+    display: block;
+    margin-bottom: 0.65rem;
+    color: var(--ink-soft, #55524A);
+    font-size: 1rem;
+    line-height: 1.5;
 }
 
-.face .end .node {
-    background: transparent;
-    border: 1px solid var(--accent, #2A2A28);
+.face .work-meta > span:first-child {
+    color: var(--face-muted);
+    margin-right: 0.75rem;
 }
 
-.face .cursor {
-    color: var(--accent, #2A2A28);
-    animation: face-blink 1.1s step-end infinite;
+.face .work-engineering {
+    margin-bottom: 0;
 }
 
-@keyframes face-blink {
-    50% {
-        opacity: 0;
-    }
+.face .engineering-label {
+    display: block;
+    margin-bottom: 0.3rem;
+    color: var(--face-muted);
+    font-size: 0.9rem;
+    line-height: 1.6;
 }
 
-/* =========================================
-   RESPONSIVE
-   ========================================= */
-
-@media (max-width: 480px) {
-    .face .profile {
-        flex-direction: column;
-        align-items: center;
-        gap: 1rem;
-    }
-
-    .face .portrait {
-        width: 110px;
-        height: 140px;
-    }
-
-    .face .identity {
-        width: 100%;
-    }
-
-    .face .section-header {
-        font-size: 0.8rem;
-    }
-
-    .face .fields {
-        padding-left: 0.85rem;
-    }
-
-    .face .field {
-        gap: 0.5rem;
-    }
-
-    .face .identity .key {
-        width: 5.25rem;
-        font-size: 0.85rem;
-    }
-
-    .face .identity .value {
-        font-size: 0.85rem;
-    }
-
-    .face .entry {
-        padding-left: 1.25rem;
-        padding-bottom: 1.25rem;
-    }
-
-    .face .entry-header {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 0.25rem;
-    }
-
-    .face .period {
-        margin-left: 1.2rem;
-        font-size: 0.85rem;
-    }
-
-    .face .work .value {
-        font-size: 0.9rem;
-    }
+.face .work-engineering ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
 }
 
-@media (prefers-reduced-motion: reduce) {
-    .face .cursor {
-        animation: none;
-    }
+.face .work-engineering li {
+    position: relative;
+    padding-left: 1.25rem;
+    margin-bottom: 0.15rem;
+    color: var(--ink-soft, #55524A);
+    font-size: 1rem;
+    line-height: 1.6;
+    text-align: left;
+}
+
+.face .work-engineering li::before {
+    content: "└";
+    position: absolute;
+    left: 0;
+    color: var(--face-muted);
+}
+
+.face .work-engineering li:last-child {
+    margin-bottom: 0;
 }
 
 /* =========================================
-   CONTACT
+   REACH — CONTACT
    ========================================= */
 
-.face .work,
 .face .contact {
     margin-top: 1.5rem;
+    scroll-margin-top: 5rem;
 }
 
-.face .identity .section-header,
 .face .contact .section-header {
-    margin-bottom: 0.75rem;
+    margin-bottom: 1rem;
+}
+
+.face .contact-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+
+.face .contact-group + .contact-group {
+    margin-top: 1rem;
+}
+
+.face .contact .field {
+    margin: 0;
 }
 
 .face .contact .key {
-    width: 7rem;
+    width: 7.5rem;
     font-size: 0.9rem;
     font-weight: 600;
+}
+
+.face .contact .value {
+    font-size: 0.95rem;
 }
 
 .face .contact-link {
     display: inline-flex;
     align-items: baseline;
     gap: 0.5rem;
+    flex: 0 1 auto;
     width: fit-content;
-
+    min-width: 0;
     color: var(--accent-face, #7A5C42);
     font-size: 0.95rem;
     font-weight: 500;
     text-decoration: none;
     overflow-wrap: anywhere;
+}
 
-    transition: color 150ms ease;
+.face .contact-link span {
+    flex-shrink: 0;
+    font-size: 0.85rem;
 }
 
 .face .contact-link:hover {
@@ -394,59 +364,10 @@
     text-underline-offset: 4px;
 }
 
-/* Contact field spacing */
-
-.face .contact .fields {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-}
-
-.face .contact .field {
-    margin-bottom: 0;
-}
-
-/* Separate availability from contact links */
-
-.face .contact .field:nth-child(2) {
-    margin-bottom: 0.9rem;
-}
-
-.face .contact-link:focus-visible {
-    outline: 2px solid var(--accent-face, #7A5C42);
-    outline-offset: 4px;
-}
-
-.face .contact-link span {
-    flex-shrink: 0;
-    font-size: 0.85rem;
-}
-
-/* Mobile */
-
-@media (max-width: 480px) {
-    .face .contact .key {
-        width: 6.5rem;
-        font-size: 0.85rem;
-    }
-
-    .face .work,
-    .face .contact {
-        margin-top: 1.25rem;
-    }
-
-    .face .contact-link {
-        font-size: 0.85rem;
-    }
-}
-
-/* =========================================
-   RESUME — ACTIONS
-   ========================================= */
-
 .face .resume-actions {
     display: flex;
     flex-wrap: wrap;
+    align-items: baseline;
     gap: 1.5rem;
 }
 
@@ -454,11 +375,11 @@
     padding: 0;
     border: none;
     background: none;
-
     color: var(--accent-face, #7A5C42);
-    font: inherit;
+    font-family: inherit;
     font-size: 0.95rem;
     font-weight: 500;
+    line-height: inherit;
     text-decoration: none;
     cursor: pointer;
 }
@@ -470,24 +391,20 @@
 }
 
 /* =========================================
-   RESUME — MODAL
+   RESUME — PREVIEW DIALOG
    ========================================= */
 
 .face .resume-dialog {
     box-sizing: border-box;
-
     width: min(900px, calc(100vw - 2rem));
     height: min(850px, calc(100dvh - 2rem));
     max-width: none;
     max-height: none;
-
     margin: auto;
     padding: 0;
-
     background: var(--paper, #EDEAE1);
     border: 1px solid var(--paper-edge, #D8D4C7);
     color: var(--ink);
-
     font-family: var(--font-mono, monospace);
 }
 
@@ -500,22 +417,18 @@
     background: rgba(25, 24, 22, 0.7);
 }
 
-/* Header */
-
 .face .resume-header {
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 1rem;
-
     padding: 0.9rem 1.25rem;
     border-bottom: 1px solid var(--paper-edge);
 }
 
 .face .resume-header h2 {
     margin: 0;
-
-    color: var(--ink-faint);
+    color: var(--face-muted);
     font-size: 0.92rem;
     font-weight: 600;
     letter-spacing: 0.05em;
@@ -527,15 +440,18 @@
     gap: 1.5rem;
 }
 
+.face .resume-controls form {
+    margin: 0;
+}
+
 .face .resume-controls a,
 .face .resume-controls button,
 .face .resume-footer a {
     padding: 0;
     border: none;
     background: none;
-
-    color: var(--accent-face);
-    font: inherit;
+    color: var(--accent-face, #7A5C42);
+    font-family: inherit;
     font-size: 0.8rem;
     text-decoration: none;
     cursor: pointer;
@@ -548,8 +464,6 @@
     text-underline-offset: 4px;
 }
 
-/* PDF viewer */
-
 .face .resume-viewer {
     display: block;
     flex: 1;
@@ -559,32 +473,130 @@
     background: white;
 }
 
-/* Footer */
-
 .face .resume-footer {
     display: flex;
     justify-content: space-between;
     gap: 1rem;
-
     padding: 0.65rem 1.25rem;
     border-top: 1px solid var(--paper-edge);
-
-    color: var(--ink-faint);
+    color: var(--face-muted);
     font-size: 0.75rem;
 }
 
-/* Keyboard accessibility */
-
+.face .contact-link:focus-visible,
 .face .resume-link:focus-visible,
 .face .resume-dialog a:focus-visible,
 .face .resume-dialog button:focus-visible {
-    outline: 2px solid var(--accent-face);
+    outline: 2px solid var(--accent-face, #7A5C42);
     outline-offset: 4px;
 }
 
-/* Mobile */
+/* =========================================
+   FACE — PAGE LAYOUT
+   ========================================= */
+
+main:has(> .face) {
+    align-items: stretch;
+    text-align: left;
+    gap: 0;
+    padding-top: 1.5rem;
+    padding-bottom: 4rem;
+}
+
+main:has(> .face) > .face {
+    width: 100%;
+    max-width: 700px;
+    margin-inline: auto;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* =========================================
+   RESPONSIVE
+   ========================================= */
 
 @media (max-width: 600px) {
+    .face .section-header {
+        font-size: 0.85rem;
+    }
+
+    .face .profile {
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    .face .portrait {
+        width: 110px;
+        height: 140px;
+    }
+
+    .face .portrait img {
+        transform: scale(1.45);
+        transform-origin: center bottom;
+    }
+
+    .face .identity {
+        width: 100%;
+    }
+
+    .face .identity .key,
+    .face .identity .value {
+        font-size: 0.85rem;
+    }
+
+    .face .fields {
+        padding-left: 0.85rem;
+    }
+
+    .face .work-heading {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.25rem;
+    }
+
+    .face .work-title {
+        font-size: 1.25rem;
+    }
+
+    .face .work-number {
+        font-size: 0.9rem;
+    }
+
+    .face .work-period {
+        font-size: 0.85rem;
+        margin-left: 1.5rem;
+    }
+
+    .face .work-description {
+        font-size: 1rem;
+        line-height: 1.75;
+    }
+
+    .face .work-meta,
+    .face .work-engineering li {
+        font-size: 1rem;
+    }
+
+    .face .work-subtitle,
+    .face .engineering-label {
+        font-size: 0.875rem;
+    }
+
+    .face .contact .key {
+        width: 6.5rem;
+        font-size: 0.85rem;
+    }
+
+    .face .contact .value,
+    .face .resume-link {
+        font-size: 0.85rem;
+    }
+
+    .face .resume-actions {
+        gap: 1rem;
+    }
+
     .face .resume-dialog {
         width: calc(100vw - 1rem);
         height: calc(100dvh - 1rem);
@@ -610,13 +622,5 @@
     .face .resume-footer {
         padding: 0.65rem 0.75rem;
         font-size: 0.65rem;
-    }
-
-    .face .resume-actions {
-        gap: 1rem;
-    }
-
-    .face .resume-link {
-        font-size: 0.8rem;
     }
 }
