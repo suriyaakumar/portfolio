@@ -1,86 +1,311 @@
+/* =========================================
+   HEART — MAIN CONTAINER
+   ========================================= */
+
 .writing {
-  width: 700px;
+  width: 100%;
+  max-width: 700px;
+  min-width: 0;
+  margin-inline: auto;
+  box-sizing: border-box;
+
   font-family: var(--font-mono, monospace);
   font-size: 1rem;
+  color: var(--ink);
   text-align: left;
+
+  --heart-muted: #686459;
 }
 
-.log-header {
+/* =========================================
+   ARCHIVE HEADER
+   ========================================= */
+
+.writing .archive-header {
   display: flex;
-  width: 100%;
-  box-sizing: border-box;
+  align-items: baseline;
   justify-content: space-between;
-  font-size: 0.85rem;
-  font-weight: 600;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-  color: var(--ink-faint, #8A877C);
+  gap: 1rem;
+
+  width: 100%;
   padding-bottom: 0.5rem;
-  margin-bottom: 1.5rem;
-  border-bottom: 1px solid var(--paper-edge, #D8D4C7);
+
+  border-bottom: 1px solid var(--paper-edge);
+
+  color: var(--heart-muted);
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.6;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
 }
 
+.writing .archive-header h1 {
+  margin: 0;
+  font: inherit;
+}
 
-.year {
+.writing .archive-header > span {
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+
+/* =========================================
+   ARCHIVE
+   ========================================= */
+
+.writing .archive {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+
+  margin-top: 1.5rem;
+}
+
+/* =========================================
+   YEAR GROUP
+   ========================================= */
+
+.writing .archive-year {
   display: grid;
-  grid-template-columns: 180px 1fr;
+  grid-template-columns: 7.25rem minmax(0, 1fr);
+  column-gap: 1rem;
+
+  width: 100%;
+  min-width: 0;
 }
 
-/* Mobile */
-
-@media (max-width: 768px) {
-  .year {
-    display: grid;
-    grid-template-columns: 90px 1fr;
-  }
-
-  .writing {
-    width: 100%;
-  }
-}
-
-.year-label {
-  color: var(--ink-faint);
-  font-family: var(--font-mono);
-  font-size: 0.95rem;
+.writing .year-label {
+  margin: 0;
   padding-top: 1rem;
+
+  color: var(--heart-muted);
+  font-family: var(--font-mono, monospace);
+  font-size: 0.95rem;
+  font-weight: 600;
+  line-height: 1.5;
+  letter-spacing: 0.02em;
 }
 
-.posts {
+/* =========================================
+   ARTICLE LIST
+   ========================================= */
+
+.writing .post-list {
+  width: 100%;
+  min-width: 0;
+
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
   border-top: 1px solid var(--paper-edge);
 }
 
-.post {
-  display: grid;
-  grid-template-columns: 1fr auto;
-  align-items: baseline;
-  gap: 2rem;
-
-  padding: 1rem 0;
+.writing .post-item {
+  margin: 0;
+  padding: 0;
 
   border-bottom: 1px solid var(--paper-edge);
+}
+
+/* =========================================
+   ARTICLE LINKS
+   ========================================= */
+
+.writing .post-link {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: baseline;
+  column-gap: 1.5rem;
+
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+
+  padding: 0.9rem 0;
 
   color: var(--ink);
   text-decoration: none;
 }
 
-.title {
-  font-family: var(--font-body);
-  font-size: clamp(0.85rem, 4.2vw, 1.3rem);
+/* Article title */
+
+.writing .post-title {
+  min-width: 0;
+
+  color: var(--ink);
+  font-family: var(--font-body, Georgia, serif);
+  font-size: 1.45rem;
+  font-weight: 500;
+  line-height: 1.4;
+  letter-spacing: -0.015em;
+
+  transition:
+    color 160ms ease,
+    transform 160ms ease;
 }
 
-.post time {
-  font-family: var(--font-mono);
-  font-size: 0.72rem;
-  color: var(--ink-faint);
+/* Publication date */
+
+.writing .post-link time {
+  color: var(--heart-muted);
+  font-family: var(--font-mono, monospace);
+  font-size: 0.78rem;
+  font-weight: 400;
+  line-height: 1.5;
+  letter-spacing: 0.02em;
+
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
 }
 
-.post:hover .title {
-  color: var(--accent);
+/* =========================================
+   INTERACTION
+   ========================================= */
+
+@media (hover: hover) {
+  .writing .post-link:hover .post-title {
+    color: var(--accent-heart, #7A3B3B);
+    transform: translateX(4px);
+  }
 }
 
-.empty {
-  font-family: var(--font-mono);
+.writing .post-link:focus-visible {
+  outline: 2px solid var(--accent-heart, #7A3B3B);
+  outline-offset: 4px;
+}
+
+.writing .post-link:focus-visible .post-title {
+  color: var(--accent-heart, #7A3B3B);
+}
+
+/* =========================================
+   EMPTY STATE
+   ========================================= */
+
+.writing .archive-empty {
+  margin: 2rem 0;
+
+  color: var(--heart-muted);
   font-size: 0.9rem;
-  color: var(--ink-faint);
+  line-height: 1.6;
+}
+
+/* =========================================
+   ARCHIVE FOOTER
+   ========================================= */
+
+.writing .archive-footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 100%;
+  margin-top: 2.5rem;
+  padding-top: 1rem;
+
+  border-top: 1px solid var(--paper-edge);
+  text-align: center;
+}
+
+.writing .archive-footer a {
+  color: var(--ink);
+  font-family: var(--font-mono, monospace);
+  font-size: 0.95rem;
+  font-weight: 600;
+  line-height: 1.6;
+  text-decoration: none;
+}
+
+.writing .archive-footer a:hover {
+  color: var(--accent-heart, #7A3B3B);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.writing .archive-footer a:focus-visible {
+  outline: 2px solid var(--accent-heart, #7A3B3B);
+  outline-offset: 4px;
+}
+
+/* =========================================
+   HEART — PAGE LAYOUT
+   ========================================= */
+
+main:has(> .writing) {
+  align-items: stretch;
+  text-align: left;
+  gap: 0;
+
+  padding-top: 2rem;
+  padding-bottom: 5rem;
+}
+
+/* =========================================
+   RESPONSIVE
+   ========================================= */
+
+@media (max-width: 600px) {
+
+  .writing .archive-header {
+    font-size: 0.85rem;
+  }
+
+  .writing .archive {
+    gap: 1.75rem;
+  }
+
+  /* Year becomes a heading above the articles */
+
+  .writing .archive-year {
+    grid-template-columns: minmax(0, 1fr);
+    row-gap: 0.5rem;
+  }
+
+  .writing .year-label {
+    padding-top: 0;
+
+    font-size: 0.85rem;
+  }
+
+  /* Articles */
+
+  .writing .post-link {
+    column-gap: 1rem;
+    padding: 0.85rem 0;
+  }
+
+  .writing .post-title {
+    font-size: 1.25rem;
+    line-height: 1.45;
+  }
+
+  .writing .post-link time {
+    font-size: 0.72rem;
+  }
+
+  /* Footer */
+
+  .writing .archive-footer {
+    margin-top: 2rem;
+  }
+
+  .writing .archive-footer a {
+    font-size: 0.85rem;
+  }
+}
+
+/* =========================================
+   REDUCED MOTION
+   ========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .writing .post-title {
+    transition: none;
+  }
+
+  .writing .post-link:hover .post-title {
+    transform: none;
+  }
 }

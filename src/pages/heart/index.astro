@@ -5,54 +5,71 @@ import "../../styles/heart.css";
 
 const posts = await getCollection("blog", ({ data }) => !data.draft);
 
-const sortedPosts = posts.sort(
-  (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
+const sortedPosts = [...posts].sort(
+  (a, b) => b.data.date.valueOf() - a.data.date.valueOf(),
 );
 
-const years = [...new Set(
-  sortedPosts.map((post) => post.data.date.getFullYear())
-)];
+const years = [
+  ...new Set(sortedPosts.map((post) => post.data.date.getFullYear())),
+];
 ---
 
-<BaseLayout title="Suriyaa Kumar | Heart" description="A collection of thoughts and musings so far.">
+<BaseLayout
+  title="Suriyaa Kumar | Heart"
+  description="A collection of thoughts and musings so far."
+>
   <div class="writing">
-    <div class="log-header">
-      <span>L0G // 7H0U9H75</span>
-      <span id="repos-status">{posts.length} {posts.length === 1 ? '3N7RY' : 'ENTRIES'}</span>
+    <!-- Archive header -->
+    <header class="archive-header">
+      <h1>L0G // 7H0U9H75</h1>
+
+      <span>
+        {String(sortedPosts.length).padStart(2, "0")}
+        {sortedPosts.length === 1 ? " ENTRY" : " ENTRIES"}
+      </span>
+    </header>
+
+    <!-- Chronological archive -->
+    <div class="archive">
+      {
+        years.map((year) => {
+          const yearPosts = sortedPosts.filter(
+            (post) => post.data.date.getFullYear() === year,
+          );
+
+          return (
+            <section class="archive-year" aria-labelledby={`year-${year}`}>
+              <h2 class="year-label" id={`year-${year}`}>
+                [{year}]
+              </h2>
+
+              <ol class="post-list">
+                {yearPosts.map((post) => (
+                  <li class="post-item">
+                    <a href={`/heart/${post.id}/`} class="post-link">
+                      <span class="post-title">{post.data.title}</span>
+
+                      <time datetime={post.data.date.toISOString()}>
+                        {post.data.date.toLocaleDateString("en-GB", {
+                          day: "2-digit",
+                          month: "2-digit",
+                        })}
+                      </time>
+                    </a>
+                  </li>
+                ))}
+              </ol>
+            </section>
+          );
+        })
+      }
     </div>
 
-    {years.map((year) => {
-      const yearPosts = sortedPosts.filter(
-        (post) => post.data.date.getFullYear() === year
-      );
+    {sortedPosts.length === 0 && <p class="archive-empty">Nothing here yet.</p>}
 
-      return (
-        <section class="year">
-          <div class="year-label">[{year}]</div>
-
-          <div class="posts">
-            {yearPosts.map((post) => (
-              <a
-                href={`/heart/${post.id}/`}
-                class="post"
-              >
-                <span class="title">{post.data.title}</span>
-
-                <time datetime={post.data.date.toISOString()}>
-                  {post.data.date.toLocaleDateString("en-GB", {
-                    day: "2-digit",
-                    month: "2-digit",
-                  })}
-                </time>
-              </a>
-            ))}
-          </div>
-        </section>
-      );
-    })}
-
-    {posts.length === 0 && (
-      <p class="empty">Nothing here yet.</p>
-    )}
+    <!-- Archive footer -->
+    <footer class="archive-footer">
+      <a href="/rss.xml"> [SUBSCRIBE VIA RSS ↗] </a>
+    </footer>
   </div>
 </BaseLayout>
