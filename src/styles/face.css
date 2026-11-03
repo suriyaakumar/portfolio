@@ -390,6 +390,48 @@
     text-underline-offset: 4px;
 }
 
+/* Experience footer — matches BRAIN */
+
+.face .work-footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1.25rem;
+
+    margin-top: 1.5rem;
+    padding-top: 1rem;
+
+    border-top: 1px solid var(--paper-edge);
+}
+
+.face .work-footer button,
+.face .work-footer a {
+    padding: 0;
+    border: none;
+    background: none;
+
+    color: var(--ink);
+    font-family: var(--font-mono, monospace);
+    font-size: 0.95rem;
+    font-weight: 600;
+    line-height: 1.6;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.face .work-footer button:hover,
+.face .work-footer a:hover {
+    text-decoration: underline;
+    text-underline-offset: 4px;
+}
+
+.face .work-footer button:focus-visible,
+.face .work-footer a:focus-visible {
+    outline: 2px solid var(--accent-face);
+    outline-offset: 4px;
+}
+
 /* =========================================
    RESUME — PREVIEW DIALOG
    ========================================= */
